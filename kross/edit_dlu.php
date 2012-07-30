@@ -7,6 +7,11 @@ include "../lib.php";
 if (isset($_SESSION['valid_user'])) {
 	init_db();
 
+	// Сохраняем временную метку момента начала редактирования
+	$timestamp = time();
+	$query = "UPDATE `dlu` SET `timestamp` = '$timestamp' WHERE `dluID` = '$dluID'";
+	$result = mysql_query($query);
+
 	$query = "SELECT * FROM dlu WHERE dluID = '$dluID'";
 	$result = mysql_query($query);
 	$row = mysql_fetch_assoc($result);
@@ -31,6 +36,7 @@ if (isset($_SESSION['valid_user'])) {
 
 	print "<form action='update_dlu.php' method='post'>\n";
 	print "<input type='hidden' name='dluID' value='$dluID'>\n";
+	print "<input type='hidden' name='timestamp' value='$timestamp'>\n";
 
 	for ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
 		print "<tr>\n";
