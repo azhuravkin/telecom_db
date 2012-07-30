@@ -6,8 +6,7 @@ CREATE TABLE `auth` (
   `authID` smallint(5) unsigned NOT NULL auto_increment,
   `username` varchar(128) NOT NULL default '',
   `password` varchar(128) NOT NULL default '',
-  `listen` char(1) NOT NULL default 'Y',
-  `writable` char(1) NOT NULL default 'Y',
+  `writable` char(1) NOT NULL default 'N',
   PRIMARY KEY (`authID`)
 ) DEFAULT CHARSET=utf8;
 
