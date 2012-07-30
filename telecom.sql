@@ -26,6 +26,7 @@ CREATE TABLE `dlu` (
   `dluID` smallint(5) unsigned NOT NULL auto_increment,
   `sort` smallint(5) unsigned NOT NULL default '0',
   `name` varchar(128) NOT NULL default '',
+  `timestamp` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY (`dluID`)
 ) DEFAULT CHARSET=utf8;
 
