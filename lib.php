@@ -112,6 +112,12 @@ function freeID($query) {
 	return $output;
 }
 
+function nextID($query) {
+	$result = mysql_query($query);
+	$max = mysql_fetch_array($result);
+	return $max[0] + 1;
+}
+
 function goHome() {
 	print '<meta http-equiv="Refresh" content="1; URL=/db/">&nbsp;
 <div align="center"><h4><font color="red">Вы не можете просматривать эту страницу!</font></h4>';

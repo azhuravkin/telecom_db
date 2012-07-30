@@ -23,18 +23,21 @@ if (isset($_SESSION['valid_user'])) {
 		$dluName = trim($_POST['dluName']);
 
 		// Ищем свободный dluID
-		$query = "SELECT dluID AS id FROM dlu ORDER BY id";
-		$dluID = freeID($query);
+		$query = "SELECT MAX(`dluID`) FROM `dlu`";
+		$dluID = nextID($query);
 
 		$query = "INSERT INTO dlu VALUES ($dluID, '$dluSort', '$dluName')";
 		mysql_query($query) or die ("Query failed");
 
 		// Создаём пустую таблицу dlu
-		for ($count = 0; $count <= 99; $count++) {
-			// Вставляем данные в таблицу para
-			$query = "INSERT INTO para VALUES (NULL, '".sprintf("%02d", $count)."', '', '', '', '', '', '', '$dluID')";
-			mysql_query($query) or die ("Query failed");
+		$query = "INSERT INTO para VALUES (NULL, '00', '', '', '', '', '', '', '$dluID')";
+
+		for ($count = 1; $count <= 99; $count++) {
+			$query .= ", (NULL, '".sprintf("%02d", $count)."', '', '', '', '', '', '', '$dluID')";
 		}
+
+		// Вставляем данные в таблицу para
+		mysql_query($query) or die ("Query failed");
 
 		print '<meta http-equiv="Refresh" content="1; URL=/db/kross/">&nbsp;<div align="center"><h4>Новый DLU добавлен.</h4>';
 	}
