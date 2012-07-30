@@ -1,9 +1,9 @@
-<?
+<?php
 session_start();
 include "lib.php";
 ?>
 <h3>Выход:</h3><br>
-<?
+<?php
 $old_user = $_SESSION['valid_user'];
 unset($_SESSION['valid_user']);
 session_destroy();

@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $razdelID = $_GET['razdelID'];

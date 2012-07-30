@@ -1,4 +1,4 @@
-<?
+<?php
 $uri = $_SERVER["REQUEST_URI"];
 if (($uri != "/db/login.php") && ($uri != "/db/logout.php"))
 	setcookie('page', $uri, time() + 86400 * 7, '/');
@@ -68,7 +68,7 @@ a:hover {
 <tr>
 <td><a href="/db">На главную</a></td>
 <td align="right">
-<?
+<?php
 if (isset($_SESSION['valid_user']))
 	print "<a href='/db/logout.php'>Выход (" . $_SESSION['valid_user'] . ")</a>";
 else
@@ -76,7 +76,7 @@ else
 ?>
 </td></tr>
 </table>
-<?
+<?php
 function init_db() {
 	$db_hostname = "localhost";
 	$db_username = "telecom";

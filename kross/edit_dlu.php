@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $dluID = $_GET['dluID'];
