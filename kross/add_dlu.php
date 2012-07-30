@@ -26,14 +26,14 @@ if (isset($_SESSION['valid_user'])) {
 		$query = "SELECT MAX(`dluID`) FROM `dlu`";
 		$dluID = nextID($query);
 
-		$query = "INSERT INTO dlu VALUES ($dluID, '$dluSort', '$dluName')";
+		$query = "INSERT INTO `dlu` VALUES ('$dluID', '$dluSort', '$dluName', '0')";
 		mysql_query($query) or die ("Query failed");
 
 		// Создаём пустую таблицу dlu
-		$query = "INSERT INTO para VALUES (NULL, '00', '', '', '', '', '', '', '$dluID')";
+		$query = "INSERT INTO `para` (`para`, `dluID`) VALUES ('00', '$dluID')";
 
-		for ($count = 1; $count <= 99; $count++) {
-			$query .= ", (NULL, '".sprintf("%02d", $count)."', '', '', '', '', '', '', '$dluID')";
+		for ($count = 1; $count < 100; $count++) {
+			$query .= ", ('".sprintf("%02d", $count)."', '$dluID')";
 		}
 
 		// Вставляем данные в таблицу para
