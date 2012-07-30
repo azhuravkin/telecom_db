@@ -26,8 +26,9 @@ if (isset($_SESSION['valid_user'])) {
 			$abonent = trim($_POST['abonent'][$i]);
 
 			// Вносим изменения в таблицу para
-			$query = "UPDATE para SET telephone = '$tel', pult = '$pult', sign = '$sign',
-			pen = '$pen', kross = '$kross', abonent = '$abonent' WHERE paraID = '$paraID'";
+			$query = "UPDATE `para` SET `telephone` = '$tel', `pult` = '$pult', `sign` = '$sign',
+			`pen` = '$pen', `kross` = '$kross', `abonent` = '$abonent' WHERE `paraID` = '$paraID'";
+
 			mysql_query($query) or die ("Query failed");
 		}
 
