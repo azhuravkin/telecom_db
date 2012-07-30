@@ -32,16 +32,16 @@ if (isset($_SESSION['valid_user'])) {
 		$number = trim($_GET['number']);
 
 		// Ищем свободный podrazdelID
-		$query = "SELECT podrazdelID AS id FROM podrazdel ORDER BY podrazdelID";
-		$podrazdelID = freeID($query);
+		$query = "SELECT MAX(`podrazdelID`) FROM `podrazdel`";
+		$podrazdelID = nextID($query);
 
 		// Ищем свободный serviceID
-		$query = "SELECT serviceID AS id FROM service ORDER BY serviceID";
-		$serviceID = freeID($query);
+		$query = "SELECT MAX(`serviceID`) FROM `service`";
+		$serviceID = nextID($query);
 
 		// Ищем свободный numberID
-		$query = "SELECT numberID AS id FROM number ORDER BY numberID";
-		$numberID = freeID($query);
+		$query = "SELECT MAX(`numberID`) FROM `number`";
+		$numberID = nextID($query);
 
 		// Вставляем данные в таблицу podrazdel
 		$query = "INSERT INTO podrazdel VALUES ('$podrazdelID','$podrazdel')";

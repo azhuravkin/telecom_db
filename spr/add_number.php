@@ -17,8 +17,8 @@ if (isset($_SESSION['valid_user'])) {
 		$telephone = trim($_GET['telephone']);
 
 		// Ищем свободный numberID
-		$query = "SELECT numberID AS id FROM number ORDER BY id";
-		$numberID = freeID($query);
+		$query = "SELECT MAX(`numberID`) FROM `number`";
+		$numberID = nextID($query);
 
 		// Добавить телефонный номер в данную службу
 		$query = "INSERT INTO number VALUES ('$numberID','$telephone','$serviceID')";

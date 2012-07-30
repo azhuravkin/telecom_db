@@ -32,12 +32,12 @@ if (isset($_SESSION['valid_user'])) {
 		$number = trim($_GET['number']);
 
 		// Ищем свободный serviceID
-		$query = "SELECT serviceID AS id FROM service ORDER BY id";
-		$serviceID = freeID($query);
+		$query = "SELECT MAX(`serviceID`) FROM `service`";
+		$serviceID = nextID($query);
 
 		// Ищем свободный numberID
-		$query = "SELECT numberID AS id FROM number ORDER BY id";
-		$numberID = freeID($query);
+		$query = "SELECT MAX(`numberID`) FROM `number`";
+		$numberID = nextID($query);
 
 		// Вставляем данные в таблицу service
 		$query = "INSERT INTO service VALUES ('$serviceID','$name','$comment','$podrazdelID','$razdelID')";

@@ -97,21 +97,6 @@ function init_db() {
 	mysql_query("SET NAMES 'utf8'");
 }
 
-function freeID($query) {
-	$tmp = 0;
-	$output = 1;
-	$result = mysql_query($query);
-	while ($row = mysql_fetch_assoc($result)) {
-		$tmp = $row['id'];
-		if ($tmp != $output) {
-			break;
-		} else {
-			$output++;
-		}
-	}
-	return $output;
-}
-
 function nextID($query) {
 	$result = mysql_query($query);
 	$max = mysql_fetch_array($result);

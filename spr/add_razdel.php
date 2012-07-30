@@ -18,8 +18,8 @@ if (isset($_SESSION['valid_user'])) {
 		$name = trim($_POST['name']);
 
 		// Ищем свободный razdelID
-		$query = "SELECT razdelID AS id FROM razdel ORDER BY id";
-		$razdelID = freeID($query);
+		$query = "SELECT MAX(`razdelID`) FROM `razdel`";
+		$razdelID = nextID($query);
 
 		$query = "INSERT INTO razdel VALUES ('$razdelID','$name')";
 		mysql_query($query) or die ("Query failed");

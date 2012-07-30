@@ -22,8 +22,8 @@ if (isset($_SESSION['valid_user'])) {
 		$pultName = trim($_POST['pultName']);
 
 		// Ищем свободный pultID
-		$query = "SELECT pultID AS id FROM pult_d_menu ORDER BY id";
-		$pultID = freeID($query);
+		$query = "SELECT MAX(`pultID`) FROM `pult_d_menu`";
+		$pultID = nextID($query);
 
 		$query = "INSERT INTO pult_d_menu VALUES ($pultID, '$pultSort', '$pultName')";
 		mysql_query($query) or die ("Query failed");
