@@ -6,6 +6,7 @@ include "lib.php";
 <?php
 $old_user = $_SESSION['valid_user'];
 unset($_SESSION['valid_user']);
+unset($_SESSION['writable']);
 session_destroy();
 
 if (!empty($old_user)) {
