@@ -8,7 +8,6 @@ CREATE TABLE `auth` (
   `password` varchar(128) NOT NULL default '',
   `listen` char(1) NOT NULL default 'Y',
   `writable` char(1) NOT NULL default 'Y',
-  `admin` char(1) NOT NULL default 'N',
   PRIMARY KEY (`authID`)
 ) DEFAULT CHARSET=utf8;
 
