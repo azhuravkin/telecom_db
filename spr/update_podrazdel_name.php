@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	$razdelID = trim($_POST['razdelID']);
 	$podrazdelID = trim($_POST['podrazdelID']);
 	$podrazdelName = trim($_POST['podrazdelName']);

@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 $fio = trim($_GET['fio']);
 
 if (empty($fio)) {

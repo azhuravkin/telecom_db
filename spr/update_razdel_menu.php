@@ -4,8 +4,6 @@ include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
 
-init_db();
-
 // Сколько всего разделов в списке
 $query = "SELECT count(*) AS count FROM razdel";
 $result = mysql_query($query);

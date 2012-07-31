@@ -4,8 +4,6 @@ session_start();
 $dluID = $_GET['dluID'];
 include "../lib.php";
 
-init_db();
-
 $query = "SELECT * FROM dlu WHERE dluID = '$dluID'";
 $result = mysql_query($query);
 $row = mysql_fetch_assoc($result);

@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 print '<h3>Выберите пульт:</h3>
 <table align="right">
 <form action="find.php" method="get">

@@ -49,4 +49,6 @@
     function goHome() {
 	print "<div align='center'><h4><font color='red'>У вас нет прав для редактирования!</font></h4>\n";
     }
+
+    init_db();
 ?>

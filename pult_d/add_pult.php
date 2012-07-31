@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	if (empty($_POST["pultSort"])) {
 		print '<form action=' . $_SERVER["PHP_SELF"] . ' method="post">
 <h3>Добавление нового цифрового пульта:</h3>

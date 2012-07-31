@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	$razdelID = $_GET['razdelID'];
 
 	if (empty($_GET['telephone'])) {

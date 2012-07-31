@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	$dluID = $_POST['dluID'];
 	$timestamp = $_POST['timestamp'];
 

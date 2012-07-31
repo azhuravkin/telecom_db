@@ -5,8 +5,6 @@ $id = $_GET['id'];
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	$query = "SELECT * FROM pult_a_menu WHERE id = '$id'";
 	$result = mysql_query($query);
 	$row = mysql_fetch_assoc($result);

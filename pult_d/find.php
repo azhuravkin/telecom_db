@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 $value = trim($_GET['search']);
 
 if (empty($value)) {

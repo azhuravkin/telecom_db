@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 $number = trim($_GET['number']);
 
 if (empty($number)) {

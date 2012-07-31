@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	print "<h3>Редактирование списка DLU:</h3>
 <table class='small' cellspacing='1'>
 <th colspan='3'>Название DLU:</th>

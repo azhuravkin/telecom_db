@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	print "<h3>Редактирование разделов справки:</h3>\n";
 	print "<table class='small' cellspacing='1'>\n";
 	print "<th>Название раздела:</th>\n";

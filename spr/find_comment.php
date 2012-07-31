@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 $comment = trim($_GET['comment']);
 
 if (empty($comment)) {

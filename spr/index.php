@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 print '<h3>Выберите раздел справки:</h3>';
 print '<table align="right"><tr><td>';
 print '<table align="center">

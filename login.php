@@ -10,7 +10,6 @@
 	// Если пользователь попытался зарегистрироваться
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	init_db();
 	$query = "SELECT * FROM auth WHERE username = '$username' AND password = md5('$password')";
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) > 0) {

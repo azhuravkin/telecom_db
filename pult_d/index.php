@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 $query = "SELECT * FROM pult_d_menu ORDER BY sort";
 $result = mysql_query($query);
 

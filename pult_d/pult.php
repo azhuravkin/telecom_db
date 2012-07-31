@@ -2,8 +2,6 @@
 session_start();
 include "../lib.php";
 
-init_db();
-
 $pultID = trim($_GET['pultID']);
 
 $query = "SELECT * FROM pult_d_menu WHERE pultID = '$pultID'";

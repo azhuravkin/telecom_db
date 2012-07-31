@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	$pultID = trim($_POST['pultID']);
 
 	// Получить количество записей в пульте

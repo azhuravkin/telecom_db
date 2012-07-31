@@ -4,8 +4,6 @@ include "../lib.php";
 
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	$pultID = trim($_POST['pultID']);
 
 	if (empty($_POST['key'])) {

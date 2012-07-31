@@ -5,8 +5,6 @@ $dluID = $_GET['dluID'];
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	// Сохраняем временную метку момента начала редактирования
 	$timestamp = time();
 	$query = "UPDATE `dlu` SET `timestamp` = '$timestamp' WHERE `dluID` = '$dluID'";

@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	// Сколько всего пультов в списке
 	$query = "SELECT count(*) AS count FROM pult_d_menu";
 	$result = mysql_query($query);

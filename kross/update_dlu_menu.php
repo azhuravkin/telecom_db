@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	// Сколько всего DLU в списке
 	$query = "SELECT count(*) AS count FROM dlu";
 	$result = mysql_query($query);

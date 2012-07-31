@@ -3,8 +3,6 @@ session_start();
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	init_db();
-
 	// Сколько записей у данного пульта
 	$id = $_POST['id'];
 	$query = "SELECT count(*) AS count FROM pult_a_data

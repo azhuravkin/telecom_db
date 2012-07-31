@@ -4,8 +4,6 @@ include "../lib.php";
 
 $id = $_GET['id'];
 
-init_db();
-
 $query = "SELECT * FROM pult_a_menu WHERE id = '$id'";
 $result = mysql_query($query);
 $row = mysql_fetch_assoc($result);

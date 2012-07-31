@@ -4,8 +4,6 @@ session_start();
 $razdelID = $_GET['razdelID'];
 include "../lib.php";
 
-init_db();
-
 // Получить уникальные podrazdelID из данного раздела
 $query1 = "SELECT DISTINCT podrazdelID AS count FROM service
 WHERE service.razdelID = '$razdelID' ORDER BY service.podrazdelID";
