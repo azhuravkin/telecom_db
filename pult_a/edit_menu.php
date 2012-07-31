@@ -2,7 +2,7 @@
 session_start();
 include "../lib.php";
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	init_db();
 
 	print "<h3>Редактирование списка аналоговых пультов:</h3>\n";

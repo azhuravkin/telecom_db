@@ -4,7 +4,7 @@ session_start();
 $dluID = $_GET['dluID'];
 include "../lib.php";
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	init_db();
 
 	// Сохраняем временную метку момента начала редактирования

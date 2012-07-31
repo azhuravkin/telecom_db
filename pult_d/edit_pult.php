@@ -4,7 +4,7 @@ include "../lib.php";
 
 $pultID = trim($_GET['pultID']);
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	init_db();
 
 	$query = "SELECT * FROM pult_d_menu WHERE pultID = '$pultID'";

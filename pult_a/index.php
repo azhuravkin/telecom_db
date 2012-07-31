@@ -31,7 +31,7 @@ while ($row = mysql_fetch_array($result)) {
 } // while
 print '</table>';
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	print '<p><form align="left" action="edit_menu.php" method="get">
 <input type="submit" value="Редактировать"></form></p>';
 } // if

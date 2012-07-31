@@ -2,7 +2,7 @@
 session_start();
 include "../lib.php";
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	init_db();
 	if (empty($_POST["name"])) {
 		print '<form action=' . $_SERVER["PHP_SELF"] . ' method="post">

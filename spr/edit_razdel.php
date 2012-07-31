@@ -4,7 +4,7 @@ include "../lib.php";
 
 $razdelID = $_GET['razdelID'];
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	init_db();
 
 	// Получить уникальные podrazdelID из данного раздела

@@ -4,7 +4,7 @@ session_start();
 $id = $_GET['id'];
 include "../lib.php";
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	init_db();
 
 	if (empty($_POST['abonent'])) {

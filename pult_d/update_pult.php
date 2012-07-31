@@ -2,7 +2,7 @@
 session_start();
 include "../lib.php";
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	init_db();
 
 	$pultID = trim($_POST['pultID']);

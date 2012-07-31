@@ -48,8 +48,7 @@ while ($row3 = mysql_fetch_assoc($result3)) {
 print "</td>\n</tr>\n</table>\n";
 }
 
-if (isset($_SESSION['valid_user'])) {
-
+if ($_SESSION['writable'] == 'Y') {
 	echo "<p><form align=\"left\" action=\"edit_razdel.php\" method=\"get\">
 <input type=\"hidden\" name=\"razdelID\" value=$razdelID>
 <input type=\"submit\" value=\"Редактировать\">

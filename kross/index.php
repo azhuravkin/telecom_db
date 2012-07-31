@@ -32,7 +32,7 @@ while ($row = mysql_fetch_array($result)) {
 }
 print '</table>';
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	print '<p><form align="left" action="edit_menu.php" method="post">
 <input type="submit" value="Редактировать"></form></p>';
 }

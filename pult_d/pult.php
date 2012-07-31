@@ -47,7 +47,7 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 print "</table>";
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	print "<p><form align='left' action='edit_pult.php' method='get'>
 <input type='hidden' name='pultID' value='$pultID'>
 <input type='submit' value='Редактировать'>

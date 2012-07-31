@@ -97,7 +97,7 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 print '</table>';
 
-if (isset($_SESSION['valid_user'])) {
+if ($_SESSION['writable'] == 'Y') {
 	print '<p><form align="left" action="edit_menu.php" method="post">
 <input type="submit" value="Редактировать"></form></p>';
 } // if

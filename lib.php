@@ -47,7 +47,6 @@
     }
 
     function goHome() {
-	print '<meta http-equiv="Refresh" content="1; URL=/db/">&nbsp;
-<div align="center"><h4><font color="red">Вы не можете просматривать эту страницу!</font></h4>';
+	print "<div align='center'><h4><font color='red'>У вас нет прав для редактирования!</font></h4>\n";
     }
 ?>
