@@ -12,8 +12,6 @@
 //	print "\t<tr><td><b><a href='gts/'>Телефоны ГТС</a><b></td></tr>\n";
 //	print "\t<tr><td><b><a href='other/'>Прочая информация</a><b></td></tr>\n";
 	print "</table>\n";
-    } else {
-	print '<meta http-equiv="Refresh" content="0; URL=/db/login.php">';
     }
 ?>
 </body>

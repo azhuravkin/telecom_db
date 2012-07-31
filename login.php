@@ -17,7 +17,7 @@ if (isset($_POST['username']) and isset($_POST['password'])) {
 	$access = mysql_fetch_assoc($result);
 	$_SESSION['valid_user'] = $username;
 	$_SESSION['writable'] = $access['writable'];
-	print '<meta http-equiv="Refresh" content="1; URL=' . $_COOKIE['page'] . '">&nbsp;<div align="center"><h4>Вы вошли.</h4>';
+	print '<meta http-equiv="Refresh" content="1; URL=/db/">&nbsp;<div align="center"><h4>Вы вошли.</h4>';
     } else {
 	print '<meta http-equiv="Refresh" content="1; URL=/db/login.php">&nbsp;<div align="center"><h4>Неудачная попытка входа</h4>';
     }
