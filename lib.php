@@ -8,60 +8,7 @@ if (($uri != "/db/login.php") && ($uri != "/db/logout.php"))
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>База данных АТС Hicom-300 производственного объединения БелавтоМАЗ</title>
 </head>
-<style type = "text/css">
-h3 {
-    text-align: center;
-    border-color: #AAAAAA;
-    border-style: double;
-    font-family : Arial, sans-serif;
-    font-size: 14px;
-}
-h4 {
-    font-family : Arial, sans-serif;
-    font-size: 13px;
-}
-input {
-    background-color: #ffffff;
-    border-bottom: #808080 1px solid;
-    border-left: #808080 1px solid;
-    border-right: #808080 1px solid;
-    border-top: #808080 1px solid;
-    color: #000000;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-}
-input.text {
-    width: 100%;
-}
-table.border {
-    border-style: solid;
-    border-color: #AAAAAA;
-    border-width: 1px;
-}
-table.small {
-    background: #CCCCCC;
-}
-th {
-    white-space: nowrap;
-    background: #E9E9E9;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-}
-td {
-    white-space: nowrap;
-    background: #FFFFFF;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-}
-a {
-    color: #0055aa;
-    text-decoration: none;
-    font-size: 12px;
-}
-a:hover {
-    color: #3399ee;
-    text-decoration: none;
-}
+<link rel="stylesheet" href="/db/style.css" />
 </style>
 <body>
 <table cellpadding="0" cellspacing="0" width="100%">
