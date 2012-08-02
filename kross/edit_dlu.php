@@ -5,12 +5,8 @@ $dluID = $_GET['dluID'];
 include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
-	// Сохраняем временную метку момента начала редактирования
-	$timestamp = time();
-	$query = "UPDATE `dlu` SET `timestamp` = '$timestamp' WHERE `dluID` = '$dluID'";
-	$result = mysql_query($query);
-
-	$query = "SELECT * FROM dlu WHERE dluID = '$dluID'";
+	$string = "";
+	$query = "SELECT * FROM `dlu` WHERE `dluID` = '$dluID'";
 	$result = mysql_query($query);
 	$row = mysql_fetch_assoc($result);
 
@@ -29,14 +25,13 @@ if ($_SESSION['writable'] == 'Y') {
 	print "<th>Кросс</th>\n";
 	print "<th>Абонент</th>\n";
 
-	$query = "SELECT * FROM para WHERE dluID = '$dluID' ORDER BY para";
+	$query = "SELECT * FROM `para` WHERE `dluID` = '$dluID' ORDER BY `para`";
 	$result = mysql_query($query);
 
 	print "<form action='update_dlu.php' method='post'>\n";
 	print "<input type='hidden' name='dluID' value='$dluID'>\n";
-	print "<input type='hidden' name='timestamp' value='$timestamp'>\n";
 
-	for ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
+	for ($i = 0; $row = mysql_fetch_array($result); $i++) {
 		print "<tr>\n";
 		print "\t<input type='hidden' name='paraID[$i]' value='";
 		print $row['paraID'];
@@ -61,7 +56,12 @@ if ($_SESSION['writable'] == 'Y') {
 		print "<input type='text' class='text' name='abonent[$i]' value='";
 		print $row['abonent'];
 		print "'></td>\n</tr>";
+		// Сохраняем все данные в переменную для подсчёта контрольной суммы
+		$string .= concat($row);
 	}
+	// Вычисляем контрольную сумму редактируемых данных
+	print "<input type='hidden' name='md5sum' value='".md5($string)."'>\n";
+
 	print "</table><p><input type='submit' value='Сохранить'></p>\n</form>";
 } else {
 	goHome();
