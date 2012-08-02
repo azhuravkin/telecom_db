@@ -60,5 +60,16 @@
 	return $string;
     }
 
+    function md5_count($query) {
+	$string = "";
+	$result = mysql_query($query);
+
+	for ($i = 0; $row = mysql_fetch_array($result); $i++) {
+	    $string .= concat($row);
+	}
+
+	return md5($string);
+    }
+
     init_db();
 ?>
