@@ -8,21 +8,8 @@
 <body>
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td><a href="/db">На главную</a></td>
+<td><a href="/db/">На главную</a></td>
 <td align="right">
-<?php
-    if (isset($_SESSION['valid_user'])) {
-	print "<a href='/db/logout.php'>Выход (" . $_SESSION['valid_user'] . ")</a>";
-    } else {
-	print "<a href='/db/login.php'>Вход</a>";
-
-	if ($_SERVER["REQUEST_URI"] != "/db/login.php") {
-	    die("<meta http-equiv='Refresh' content='0; URL=/db/login.php'>\n");
-	}
-    }
-?>
-</td></tr>
-</table>
 <?php
     function init_db() {
 	$db_hostname = "localhost";
@@ -31,10 +18,10 @@
 	$db_name = "telecom";
 
 	mysql_connect($db_hostname, $db_username, $db_password) or
-	    die("<h4><font color='red'>Невозможно подключиться к серверу mysql...</font></h4>\n</body>\n</html>");
+	    die("<div align='center'><h4><font color='red'>Невозможно подключиться к серверу mysql...</font></h4></div>\n</body>\n</html>");
 
 	mysql_select_db($db_name) or
-	    die("<h4><font color='red'>Невозможно выбрать базу данных $db_name...</font></h4>\n</body>\n</html>");
+	    die("<div align='center'><h4><font color='red'>Невозможно выбрать базу данных $db_name...</font></h4></div>\n</body>\n</html>");
 
 	mysql_query("SET NAMES 'utf8'");
     }
@@ -70,6 +57,18 @@
 
 	return md5($string);
     }
+
+    if (isset($_SESSION['valid_user'])) {
+	print "<a href='/db/logout.php'>Выход (".$_SESSION['valid_user'].")</a>";
+    } else {
+	print "<a href='/db/login.php'>Вход</a>";
+
+	if ($_SERVER["REQUEST_URI"] != "/db/login.php") {
+	    die("<meta http-equiv='Refresh' content='0; URL=/db/login.php'>\n");
+	}
+    }
+
+    print "</td></tr>\n</table>\n";
 
     init_db();
 ?>
