@@ -4,14 +4,9 @@ include "../lib.php";
 
 if ($_SESSION['writable'] == 'Y') {
 	$dluID = $_POST['dluID'];
-	$timestamp = $_POST['timestamp'];
 
-	// Проверяем временную метку начала редактирования
-	$query = "SELECT `timestamp` FROM `dlu` WHERE `dluID` = '$dluID'";
-	$result = mysql_query($query);
-	$last_edit = mysql_fetch_array($result);
-
-	if ($last_edit[0] != $timestamp) {
+	// Сравниваем контрольные суммы данных перед изменениями
+	if ($_POST['md5sum'] != md5_count("SELECT * FROM `para` WHERE `dluID` = '$dluID' ORDER BY `para`")) {
 		print '<div align="center"><h4><font color="red">Информация в этом DLU была обновлена другим пользователем!!!</font></h4>';
 	} else {
 		for ($i = 0; $i <= 99; $i++) {
