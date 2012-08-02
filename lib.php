@@ -50,5 +50,15 @@
 	print "<div align='center'><h4><font color='red'>У вас нет прав для редактирования!</font></h4>\n";
     }
 
+    function concat(array $array) {
+	$string = "";
+
+	for ($i = 0; isset($array[$i]); $i++) {
+	    $string .= $array[$i];
+	}
+
+	return $string;
+    }
+
     init_db();
 ?>
