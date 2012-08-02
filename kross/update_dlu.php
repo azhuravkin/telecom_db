@@ -12,7 +12,7 @@ if ($_SESSION['writable'] == 'Y') {
 	$last_edit = mysql_fetch_array($result);
 
 	if ($last_edit[0] != $timestamp) {
-		print '<div align="center"><h4><font color="red">Кто-то другой редактирует этот же DLU!!!</font></h4>';
+		print '<div align="center"><h4><font color="red">Информация в этом DLU была обновлена другим пользователем!!!</font></h4>';
 	} else {
 		for ($i = 0; $i <= 99; $i++) {
 			$paraID = $_POST['paraID'][$i];
