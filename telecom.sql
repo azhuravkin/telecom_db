@@ -7,6 +7,7 @@ CREATE TABLE `auth` (
   `username` varchar(128) NOT NULL default '',
   `password` varchar(128) NOT NULL default '',
   `writable` char(1) NOT NULL default 'N',
+  `admin` char(1) NOT NULL default 'N',
   PRIMARY KEY (`authID`)
 ) DEFAULT CHARSET=utf8;
 
@@ -14,7 +15,7 @@ CREATE TABLE `auth` (
 -- Dumping data for table `auth`
 --
 
-INSERT INTO `auth` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','Y','Y','Y');
+INSERT INTO `auth` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','Y','Y');
 
 --
 -- Table structure for table `dlu`
