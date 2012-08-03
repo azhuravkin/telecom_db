@@ -18,6 +18,7 @@
 	    $access = mysql_fetch_assoc($result);
 	    $_SESSION['valid_user'] = $username;
 	    $_SESSION['writable'] = $access['writable'];
+	    $_SESSION['admin'] = $access['admin'];
 	    die("<meta http-equiv='Refresh' content='1; URL=/db/'>&nbsp;<div align='center'><h4>Вы вошли.</h4>\n");
 	} else {
 	    print "<div align='center'><h4><font color='red'>Неудачная попытка входа. Попробуйте ещё раз.</font></h4>";
