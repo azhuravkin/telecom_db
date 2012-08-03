@@ -24,7 +24,7 @@ if ($_SESSION['writable'] == 'Y') {
 		$query = "SELECT MAX(`dluID`) FROM `dlu`";
 		$dluID = nextID($query);
 
-		$query = "INSERT INTO `dlu` VALUES ('$dluID', '$dluSort', '$dluName', '0')";
+		$query = "INSERT INTO `dlu` VALUES ('$dluID', '$dluSort', '$dluName')";
 		mysql_query($query) or die ("Query failed");
 
 		// Создаём пустую таблицу dlu
