@@ -21,7 +21,7 @@ if ($_SESSION['admin'] == 'Y') {
 		$username = trim($_POST['username']);
 		$password = $_POST['password'];
 
-		$query = "INSERT INTO `auth` VALUES (NULL, '$username', md5('password'), '";
+		$query = "INSERT INTO `auth` VALUES (NULL, '$username', md5('$password'), '";
 		$query .= (isset($_POST['writable'])) ? 'Y' : 'N';
 		$query .= "', '";
 		$query .= (isset($_POST['admin'])) ? 'Y' : 'N';
