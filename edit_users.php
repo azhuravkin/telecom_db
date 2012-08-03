@@ -3,6 +3,7 @@
     include("lib.php");
 
     if ($_SESSION['admin'] == 'Y') {
+	$string = "";
 	$query = "SELECT * FROM `auth` ORDER BY `username`";
 	$result = mysql_query($query);
 
@@ -21,7 +22,12 @@
 	    print "></td>\n\t<td width='20%' align='center'><input type='checkbox' name='admin[$i]'";
 	    if ($row['admin'] == 'Y') print " checked";
 	    print "></td>\n\t<td width='20%' align='center'><input type='checkbox' name='delete[$i]'></tr>";
+
+	    $string .= concat($row);
 	}
+	// Вычисляем контрольную сумму редактируемых данных
+	print "\n<input type='hidden' name='md5sum' value='".md5($string)."'>\n";
+
 	print '</table><p>
 <table width="1%">
 <tr>
