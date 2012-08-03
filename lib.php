@@ -8,7 +8,7 @@
 <body>
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td><a href="/db/">На главную</a></td>
+<td><a href="/db/">На главную</a><?php if ($_SESSION['admin'] == 'Y') echo ' <a href="/db/users.php">Пользователи</a>'; ?></td>
 <td align="right">
 <?php
     function init_db() {
