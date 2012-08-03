@@ -27,7 +27,7 @@ if ($_SESSION['admin'] == 'Y') {
 
 	    // Изменить пароль
 	    if ($password != "") {
-		$query .= ", `password` = '$password'";
+		$query .= ", `password` = md5('$password')";
 	    }
 
 	    // Изменить права на запись
