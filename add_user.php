@@ -21,7 +21,12 @@ if ($_SESSION['admin'] == 'Y') {
 		$username = trim($_POST['username']);
 		$password = $_POST['password'];
 
-		$query = "INSERT INTO `auth` VALUES (NULL, '$username', md5('password'), 'N', 'N')";
+		$query = "INSERT INTO `auth` VALUES (NULL, '$username', md5('password'), '";
+		$query .= (isset($_POST['writable'])) ? 'Y' : 'N';
+		$query .= "', '";
+		$query .= (isset($_POST['admin'])) ? 'Y' : 'N';
+		$query .= "')";
+
 		mysql_query($query) or die ("Query failed");
 
 		print '<meta http-equiv="Refresh" content="1; URL=/db/edit_users.php">&nbsp;<div align="center"><h4>Новый пользователь добавлен.</h4>';
