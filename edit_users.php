@@ -14,8 +14,8 @@
 </tr>';
 	while ($row = mysql_fetch_array($result)) {
 	    $i = $row['authID'];
-	    print "\n<tr>\n\t<td width='20%'><input type='text' name='username[$i]' value='".$row['username']."'></td>";
-	    print "\n\t<td width='20%'><input type='password' name='password[$i]' value=''></td>";
+	    print "\n<tr>\n\t<td width='20%'><input type='text' class='text' name='username[$i]' value='".$row['username']."'></td>";
+	    print "\n\t<td width='20%'><input type='password' class='text' name='password[$i]' value=''></td>";
 	    print "\n\t<td width='20%' align='center'><input type='checkbox' name='writable[$i]'";
 	    if ($row['writable'] == 'Y') print " checked";
 	    print "></td>\n\t<td width='20%' align='center'><input type='checkbox' name='admin[$i]'";
