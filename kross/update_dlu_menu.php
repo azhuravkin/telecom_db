@@ -17,29 +17,27 @@ if ($_SESSION['writable'] == 'Y') {
 
 	for ($i = 0; $i < $count; $i++) {
 	    $dluID = $_POST['dluID'][$i];
-	    $dluSort = $_POST['sort'][$i];
+	    $dluSort = trim($_POST['sort'][$i]);
 	    $dluName = trim($_POST['dluName'][$i]);
 
 	    // Изменить порядковый номер
-	    $query = "UPDATE dlu SET sort = '$dluSort'
-	    WHERE dluID = '$dluID'";
-	    mysql_query($query) or die ("Query failed");
+	    $query = "UPDATE `dlu` SET `sort` = '$dluSort'";
 
 	    // Изменить название раздела
-	    $query = "UPDATE dlu SET name = '$dluName'
-	    WHERE dluID = '$dluID'";
+	    $query .= ", `name` = '$dluName' WHERE `dluID` = '$dluID'";
+
 	    mysql_query($query) or die ("Query failed");
 
-	    // Если был(и) отмечен(ы) чекбокс(ы)
+	    // Если было отмечено удаление
 	    if (isset($_POST['del_dlu'][$i])) {
 		$del_dlu = $_POST['del_dlu'][$i];
 
 		// Удалить данные из таблицы dlu
-		$query = "DELETE FROM dlu WHERE dluID = '$del_dlu'";
+		$query = "DELETE FROM `dlu` WHERE `dluID` = '$del_dlu'";
 		mysql_query($query) or die ("Query failed");
 
 		// Удалить данные из таблицы para
-		$query = "DELETE FROM para WHERE dluID = '$del_dlu'";
+		$query = "DELETE FROM `para` WHERE `dluID` = '$del_dlu'";
 		mysql_query($query) or die ("Query failed");
 	    }
 	}
