@@ -7,18 +7,9 @@ if ($_SESSION['admin'] == 'Y') {
     if ($_POST['md5sum'] != md5_count("SELECT * FROM `auth` ORDER BY `username`")) {
 	print '<div align="center"><h4><font color="red">Информация в этом списке была обновлена другим пользователем!!!</font></h4>';
     } else {
-	// Сколько всего пользователей в списке
-	$query = "SELECT COUNT(*) AS `count` FROM `auth`";
-	$result = mysql_query($query);
-
-	while ($row = mysql_fetch_array($result)) {
-	    $count = $row['count'];
-	}
-
-	for ($i = 0; $i < $count; $i++) {
-	    $authID = $_POST['authID'][$i];
-	    $username = trim($_POST['username'][$i]);
-	    $password = $_POST['password'][$i];
+	foreach ($_POST['username'] as $authID => $user) {
+	    $username = trim($user);
+	    $password = $_POST['password'][$authID];
 
 	    $query = "UPDATE `auth` SET";
 
@@ -32,17 +23,17 @@ if ($_SESSION['admin'] == 'Y') {
 
 	    // Изменить права на запись
 	    $query .= ", `writable` = '";
-	    $query .= (isset($_POST['writable'][$i])) ? 'Y' : 'N';
+	    $query .= (isset($_POST['writable'][$authID])) ? 'Y' : 'N';
 	    // Изменить права на администрирование
 	    $query .= "', `admin` = '";
-	    $query .= (isset($_POST['admin'][$i])) ? 'Y' : 'N';
+	    $query .= (isset($_POST['admin'][$authID])) ? 'Y' : 'N';
 
 	    $query .= "' WHERE `authID` = '$authID'";
 
 	    mysql_query($query) or die ("Query failed");
 
 	    // Если было отмечено удаление
-	    if (isset($_POST['delete'][$i])) {
+	    if (isset($_POST['delete'][$authID])) {
 		$query = "DELETE FROM `auth` WHERE `authID` = '$authID'";
 
 		mysql_query($query) or die ("Query failed");

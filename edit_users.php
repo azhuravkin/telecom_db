@@ -13,15 +13,16 @@
 <tr>
 <th>Пользователь:</th><th>Пароль:</th><th>Редактирование:</th><th>Администратор:</th><th>Удалить:</th>
 </tr>';
-	for ($i = 0; $row = mysql_fetch_array($result); $i++) {
-	    print "\n<tr>\n\t<input type='hidden' name='authID[$i]' value='".$row['authID']."'>";
-	    print "\n\t<td width='20%'><input type='text' class='text' name='username[$i]' value='".$row['username']."'></td>";
-	    print "\n\t<td width='20%'><input type='password' class='text' name='password[$i]' value=''></td>";
-	    print "\n\t<td width='20%' align='center'><input type='checkbox' name='writable[$i]'";
+	while ($row = mysql_fetch_array($result)) {
+	    $authID = $row['authID'];
+
+	    print "\n<tr>\n\t<td width='20%'><input type='text' class='text' name='username[$authID]' value='".$row['username']."'></td>";
+	    print "\n\t<td width='20%'><input type='password' class='text' name='password[$authID]' value=''></td>";
+	    print "\n\t<td width='20%' align='center'><input type='checkbox' name='writable[$authID]'";
 	    if ($row['writable'] == 'Y') print " checked";
-	    print "></td>\n\t<td width='20%' align='center'><input type='checkbox' name='admin[$i]'";
+	    print "></td>\n\t<td width='20%' align='center'><input type='checkbox' name='admin[$authID]'";
 	    if ($row['admin'] == 'Y') print " checked";
-	    print "></td>\n\t<td width='20%' align='center'><input type='checkbox' name='delete[$i]'></td>\n</tr>";
+	    print "></td>\n\t<td width='20%' align='center'><input type='checkbox' name='delete[$authID]'></td>\n</tr>";
 
 	    $string .= concat($row);
 	}
