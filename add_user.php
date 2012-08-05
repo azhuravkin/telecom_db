@@ -3,8 +3,8 @@ session_start();
 include "lib.php";
 
 if ($_SESSION['admin'] == 'Y') {
-	if (empty($_POST["username"])) {
-		print '<form method="post">
+    if (empty($_POST["username"])) {
+	print '<form method="post">
 <h3>Добавление нового пользователя:</h3>
 <table class="small" width="36%" cellspacing="1">
 <th>Пользователь:</th><th>Пароль:</th><th>Редактирование:</th><th>Администратор:</th>
@@ -17,22 +17,27 @@ if ($_SESSION['admin'] == 'Y') {
 </table>
 <p><input type="submit" value="Добавить"></p>
 </form>';
+    } else {
+	$username = trim($_POST['username']);
+	$password = $_POST['password'];
+
+	$query = "INSERT INTO `auth` VALUES (NULL, '$username', md5('$password'), '";
+	$query .= (isset($_POST['writable'])) ? 'Y' : 'N';
+	$query .= "', '";
+	$query .= (isset($_POST['admin'])) ? 'Y' : 'N';
+	$query .= "')";
+
+	if ($password == "") {
+	    print '<meta http-equiv="Refresh" content="1; URL=/db/edit_users.php">&nbsp;';
+	    print '<div align="center"><h4><font color="red">Пароль не указан!</font></h4>';
 	} else {
-		$username = trim($_POST['username']);
-		$password = $_POST['password'];
+	    mysql_query($query) or die ("Query failed");
 
-		$query = "INSERT INTO `auth` VALUES (NULL, '$username', md5('$password'), '";
-		$query .= (isset($_POST['writable'])) ? 'Y' : 'N';
-		$query .= "', '";
-		$query .= (isset($_POST['admin'])) ? 'Y' : 'N';
-		$query .= "')";
-
-		mysql_query($query) or die ("Query failed");
-
-		print '<meta http-equiv="Refresh" content="1; URL=/db/edit_users.php">&nbsp;<div align="center"><h4>Новый пользователь добавлен.</h4>';
+	    print '<meta http-equiv="Refresh" content="1; URL=/db/edit_users.php">&nbsp;<div align="center"><h4>Новый пользователь добавлен.</h4>';
 	}
+    }
 } else {
-	goHome();
+    goHome();
 }
 ?>
 </body>
