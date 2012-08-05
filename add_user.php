@@ -10,7 +10,7 @@ if ($_SESSION['admin'] == 'Y') {
 <th>Пользователь:</th><th>Пароль:</th><th>Редактирование:</th><th>Администратор:</th>
 <tr>
 <td width="25%"><input type="text" class="text" name="username"></td>
-<td width="25%"><input type="text" class="text" name="password"></td>
+<td width="25%"><input type="password" class="text" name="password"></td>
 <td width="25%" align="center"><input type="checkbox" name="writable"></td>
 <td width="25%" align="center"><input type="checkbox" name="admin"></td>
 </tr>
@@ -27,8 +27,8 @@ if ($_SESSION['admin'] == 'Y') {
 	$query .= (isset($_POST['admin'])) ? 'Y' : 'N';
 	$query .= "')";
 
-	if ($password == "") {
-	    print '<meta http-equiv="Refresh" content="1; URL=/db/edit_users.php">&nbsp;';
+	if (empty($password)) {
+	    print '<meta http-equiv="Refresh" content="1; URL=/db/add_user.php">&nbsp;';
 	    print '<div align="center"><h4><font color="red">Пароль не указан!</font></h4>';
 	} else {
 	    mysql_query($query) or die ("Query failed");
