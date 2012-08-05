@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 print '<h3>Выберите пульт:</h3>
 <table align="right">

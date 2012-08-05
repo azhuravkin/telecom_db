@@ -1,8 +1,7 @@
 <?php
-session_start();
 
 $id = $_GET['id'];
-include "../lib.php";
+include "../header.php";
 
 if ($_SESSION['writable'] == 'Y') {
 	$query = "SELECT * FROM pult_a_menu WHERE id = '$id'";

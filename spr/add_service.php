@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 if ($_SESSION['writable'] == 'Y') {
 	$razdelID = $_GET['razdelID'];

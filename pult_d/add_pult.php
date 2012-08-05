@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 if ($_SESSION['writable'] == 'Y') {
 	if (empty($_POST["pultSort"])) {
@@ -23,7 +22,7 @@ if ($_SESSION['writable'] == 'Y') {
 		$query = "SELECT MAX(`pultID`) FROM `pult_d_menu`";
 		$pultID = nextID($query);
 
-		$query = "INSERT INTO pult_d_menu VALUES ($pultID, '$pultSort', '$pultName')";
+		$query = "INSERT INTO `pult_d_menu` VALUES ('$pultID', '$pultSort', '$pultName')";
 		mysql_query($query) or die ("Query failed");
 
 		print '<meta http-equiv="Refresh" content="1; URL=/db/pult_d/">&nbsp;<div align="center"><h4>Новый пульт добавлен.</h4>';

@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 $fio = trim($_GET['fio']);
 

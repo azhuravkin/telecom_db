@@ -1,8 +1,7 @@
 <?php
-session_start();
 
 $dluID = $_GET['dluID'];
-include "../lib.php";
+include "../header.php";
 
 $query = "SELECT * FROM dlu WHERE dluID = '$dluID'";
 $result = mysql_query($query);

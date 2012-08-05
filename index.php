@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    include "lib.php";
+    include "header.php";
 ?>
 <h3>Выберите базу данных:</h3>
 <table>

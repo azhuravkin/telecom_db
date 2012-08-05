@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 if ($_SESSION['writable'] == 'Y') {
 	print "<h3>Редактирование списка цифровых пультов:</h3>
@@ -9,7 +8,7 @@ if ($_SESSION['writable'] == 'Y') {
 <th>Удалить:</th>
 <form action='update_pult_menu.php' method='post'>";
 
-	$query = "SELECT * FROM pult_d_menu ORDER BY sort";
+	$query = "SELECT * FROM `pult_d_menu` ORDER BY `sort`";
 	$result = mysql_query($query);
 
 	$i = 0;

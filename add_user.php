@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "lib.php";
+include "header.php";
 
 if ($_SESSION['admin'] == 'Y') {
     if (empty($_POST["username"])) {

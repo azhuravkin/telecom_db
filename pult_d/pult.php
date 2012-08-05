@@ -1,10 +1,9 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 $pultID = trim($_GET['pultID']);
 
-$query = "SELECT * FROM pult_d_menu WHERE pultID = '$pultID'";
+$query = "SELECT * FROM `pult_d_menu` WHERE `pultID` = '$pultID'";
 $result = mysql_query($query);
 $row = mysql_fetch_assoc($result);
 

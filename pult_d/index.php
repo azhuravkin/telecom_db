@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 $query = "SELECT * FROM pult_d_menu ORDER BY sort";
 $result = mysql_query($query);

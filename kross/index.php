@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "../lib.php";
+include "../header.php";
 
 $query = "SELECT * FROM dlu ORDER BY sort";
 $result = mysql_query($query);

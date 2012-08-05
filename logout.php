@@ -1,9 +1,8 @@
 <?php
-    session_start();
-    include "lib.php";
-?>
-<h3>Выход:</h3><br>
-<?php
+    include "header.php";
+
+    print "<h3>Выход:</h3><br>\n";
+
     unset($_SESSION['valid_user']);
     unset($_SESSION['writable']);
     unset($_SESSION['admin']);

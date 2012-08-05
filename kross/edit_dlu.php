@@ -1,8 +1,7 @@
 <?php
-session_start();
 
 $dluID = $_GET['dluID'];
-include "../lib.php";
+include "../header.php";
 
 if ($_SESSION['writable'] == 'Y') {
     $string = "";
