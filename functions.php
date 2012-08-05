@@ -45,7 +45,7 @@
 	print "<td><a href='/db/'>На главную</a>";
 
 	if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'Y') {
-	    echo '&nbsp; <a href="/db/edit_users.php">Пользователи</a>';
+	    echo '&nbsp; <a href="/db/users/edit_users.php">Пользователи</a>';
 	}
 
 	print "</td><td align='right'>";

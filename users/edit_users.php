@@ -1,5 +1,5 @@
 <?php
-    include("header.php");
+    include("../header.php");
 
     if ($_SESSION['admin'] == 'Y') {
 	$string = "";
@@ -42,5 +42,5 @@
 	goHome();
     }
 
-    include "footer.php";
+    include "../footer.php";
 ?>

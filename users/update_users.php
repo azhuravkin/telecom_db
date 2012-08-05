@@ -1,5 +1,5 @@
 <?php
-    include "header.php";
+    include "../header.php";
 
     if ($_SESSION['admin'] == 'Y') {
 	// Сравниваем контрольные суммы данных перед изменениями
@@ -39,11 +39,11 @@
 		    mysql_query($query) or die ("Query failed");
 		}
 	    }
-	    print '<meta http-equiv="Refresh" content="1; URL=/db/edit_users.php">&nbsp;<div align="center"><h4>Изменения успешно сохранены.</h4>';
+	    print '<meta http-equiv="Refresh" content="1; URL=/db/users/edit_users.php">&nbsp;<div align="center"><h4>Изменения успешно сохранены.</h4>';
 	}
     } else {
 	goHome();
     }
 
-    include "footer.php";
+    include "../footer.php";
 ?>
