@@ -1,19 +1,19 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-$pultID = trim($_GET['pultID']);
+    $pultID = trim($_GET['pultID']);
 
-$query = "SELECT * FROM `pult_d_menu` WHERE `pultID` = '$pultID'";
-$result = mysql_query($query);
-$row = mysql_fetch_assoc($result);
+    $query = "SELECT * FROM `pult_d_menu` WHERE `pultID` = '$pultID'";
+    $result = mysql_query($query);
+    $row = mysql_fetch_assoc($result);
 
-print "<h3>Пульт N-";
-print $row['sort'];
-print " - ";
-print $row['name'];
-print "</h3>";
+    print "<h3>Пульт N-";
+    print $row['sort'];
+    print " - ";
+    print $row['name'];
+    print "</h3>";
 
-print '<table class="small" width="100%" cellspacing="1">
+    print '<table class="small" width="100%" cellspacing="1">
 <th>№ кнопки</th>
 <th>Ф.И.О.</th>
 <th>Тел.</th>
@@ -22,10 +22,10 @@ print '<table class="small" width="100%" cellspacing="1">
 <th>Pen</th>
 <th>Кросс</th>';
 
-$query = "SELECT * FROM `pult_d_data` WHERE `pultID` = '$pultID' ORDER BY `key`, `sort`";
-$result = mysql_query($query);
+    $query = "SELECT * FROM `pult_d_data` WHERE `pultID` = '$pultID' ORDER BY `key`, `sort`";
+    $result = mysql_query($query);
 
-while ($row = mysql_fetch_assoc($result)) {
+    while ($row = mysql_fetch_assoc($result)) {
 	print "<tr><td width='10%'>";
 	print $row['key']."-".$row['sort'];
 	print "</td><td width='40%'>";
@@ -41,15 +41,15 @@ while ($row = mysql_fetch_assoc($result)) {
 	print "</td><td width='10%'>";
 	print $row['kross'] ? $row['kross'] : "&nbsp;";
 	print "</td></tr>\n";
-}
-print "</table>";
+    }
+    print "</table>";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	print "<p><form align='left' action='edit_pult.php' method='get'>
 <input type='hidden' name='pultID' value='$pultID'>
 <input type='submit' value='Редактировать'>
 </form></p>\n";
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

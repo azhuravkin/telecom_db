@@ -1,9 +1,9 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-$pultID = trim($_GET['pultID']);
+    $pultID = trim($_GET['pultID']);
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	$query = "SELECT * FROM pult_d_menu WHERE pultID = '$pultID'";
 	$result = mysql_query($query);
 	$row = mysql_fetch_assoc($result);
@@ -31,35 +31,35 @@ if ($_SESSION['writable'] == 'Y') {
 	print "<input type='hidden' name='pultID' value='$pultID'>\n";
 
 	for ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
-		print "<tr>\n\t";
-		print "<input type='hidden' name='keyID[$i]' value='";
-		print $row['keyID'];
-		print "'>\n\t<td width='5%'><input type='text' class='text' name='key[$i]' value='";
-		print $row['key'];
-		print "'></td>\n\t<td align='center'>-";
-		print "</td>\n\t<td width='4%'><input type='text' class='text' name='sort[$i]' value='";
-		print $row['sort'];
-		print "'></td>\n\t<td width='40%'><input type='text' class='text' name='abonent[$i]' value='";
-		print $row['abonent'];
-		print "'></td>\n\t<td width='10%'>";
-		print "<input type='text' class='text' name='tel[$i]' value='";
-		print $row['telephone'];
-		print "'></td>\n\t<td width='10%'>";
-		print "<input type='text' class='text' name='pult[$i]' value='";
-		print $row['pult'];
-		print "'></td>\n\t<td width='10%'>";
-		print "<input type='text' class='text' name='sign[$i]' value='";
-		print $row['sign'];
-		print "'></td>\n\t<td width='10%'>";
-		print "<input type='text' class='text' name='pen[$i]' value='";
-		print $row['pen'];
-		print "'></td>\n\t<td width='10%'>";
-		print "<input type='text' class='text' name='kross[$i]' value='";
-		print $row['kross'];
-		print "'></td>\n\t<td align='center' width='1%'>";
-		print "<input type='checkbox' name='del_key[$i]' value='";
-		print $row['keyID'];
-		print "'></td>\n</tr>";
+	    print "<tr>\n\t";
+	    print "<input type='hidden' name='keyID[$i]' value='";
+	    print $row['keyID'];
+	    print "'>\n\t<td width='5%'><input type='text' class='text' name='key[$i]' value='";
+	    print $row['key'];
+	    print "'></td>\n\t<td align='center'>-";
+	    print "</td>\n\t<td width='4%'><input type='text' class='text' name='sort[$i]' value='";
+	    print $row['sort'];
+	    print "'></td>\n\t<td width='40%'><input type='text' class='text' name='abonent[$i]' value='";
+	    print $row['abonent'];
+	    print "'></td>\n\t<td width='10%'>";
+	    print "<input type='text' class='text' name='tel[$i]' value='";
+	    print $row['telephone'];
+	    print "'></td>\n\t<td width='10%'>";
+	    print "<input type='text' class='text' name='pult[$i]' value='";
+	    print $row['pult'];
+	    print "'></td>\n\t<td width='10%'>";
+	    print "<input type='text' class='text' name='sign[$i]' value='";
+	    print $row['sign'];
+	    print "'></td>\n\t<td width='10%'>";
+	    print "<input type='text' class='text' name='pen[$i]' value='";
+	    print $row['pen'];
+	    print "'></td>\n\t<td width='10%'>";
+	    print "<input type='text' class='text' name='kross[$i]' value='";
+	    print $row['kross'];
+	    print "'></td>\n\t<td align='center' width='1%'>";
+	    print "<input type='checkbox' name='del_key[$i]' value='";
+	    print $row['keyID'];
+	    print "'></td>\n</tr>";
 	}
 	print "</table>
 <p>
@@ -72,9 +72,9 @@ if ($_SESSION['writable'] == 'Y') {
 </form>	
 </tr>
 </table></p>";
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

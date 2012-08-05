@@ -1,11 +1,11 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-$query = "SELECT * FROM pult_d_menu ORDER BY sort";
-$result = mysql_query($query);
+    $query = "SELECT * FROM pult_d_menu ORDER BY sort";
+    $result = mysql_query($query);
 
-print '<h3>Выберите Пульт:</h3>';
-print '<table align="right">
+    print '<h3>Выберите Пульт:</h3>';
+    print '<table align="right">
 <tr>
 	<form action="find.php" method="get">
 	<td align="center">Поиск по пультам:</td>
@@ -19,21 +19,20 @@ print '<table align="right">
 </tr>
 </table>';
 
-print '<table>';
+    print '<table>';
 
-while ($row = mysql_fetch_array($result)) {
+    while ($row = mysql_fetch_array($result)) {
 	$pultID = $row['pultID'];
 	$sort = $row['sort'];
 	$pultName = $row['name'];
 	print "<tr>\n<td><b><a href=\"pult.php?pultID=$pultID\">Пульт N-$sort - $pultName</a></b></td>\n</tr>\n";
-}
-print '</table>';
+    }
+    print '</table>';
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	print '<p><form align="left" action="edit_menu.php" method="post">
 <input type="submit" value="Редактировать"></form></p>';
-}
+    }
 
-print '</body>
-</html>';
+    include "../footer.php";
 ?>

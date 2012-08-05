@@ -1,7 +1,7 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	print "<h3>Редактирование разделов справки:</h3>\n";
 	print "<table class='small' cellspacing='1'>\n";
 	print "<th>Название раздела:</th>\n";
@@ -11,20 +11,18 @@ if ($_SESSION['writable'] == 'Y') {
 	$query = "SELECT * FROM razdel ORDER BY name";
 	$result = mysql_query($query);
 
-	$i = 0;
-	while ($row = mysql_fetch_assoc($result)) {
-		print "\n<tr>\n<td>";
-		print "<input type='text' name=\"razdelName[$i]\" size='40' value='";
-		print $row['name'];
-		print "'>\n<input type='hidden' name=\"razdelID[$i]\" value='";
-		print $row['razdelID'];
-		print "'></td>\n";
-		print "<td align='center'>\n";
-		print "<input type='checkbox' name=\"del_razdelID[$i]\" value='";
-		print $row['razdelID'];
-		print "'>\n</td>";
-		print "</tr>";
-		$i++;
+	for ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
+	    print "\n<tr>\n<td>";
+	    print "<input type='text' name=\"razdelName[$i]\" size='40' value='";
+	    print $row['name'];
+	    print "'>\n<input type='hidden' name=\"razdelID[$i]\" value='";
+	    print $row['razdelID'];
+	    print "'></td>\n";
+	    print "<td align='center'>\n";
+	    print "<input type='checkbox' name=\"del_razdelID[$i]\" value='";
+	    print $row['razdelID'];
+	    print "'>\n</td>";
+	    print "</tr>";
 	}
 
 	print '</table><p>
@@ -37,9 +35,9 @@ if ($_SESSION['writable'] == 'Y') {
 </tr>
 </table></p>';
 
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

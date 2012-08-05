@@ -1,11 +1,11 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	$razdelID = $_GET['razdelID'];
 
 	if (empty($_GET["podrazdel"]) or (empty($_GET["name"])) or (empty($_GET["number"]))) {
-		print '<form action='.$_SERVER["PHP_SELF"].' method="get">
+	    print '<form action='.$_SERVER["PHP_SELF"].' method="get">
 <h3><table align="center">
 <tr><td><input type="text" name="podrazdel" size="40"></td></tr>
 </table></h3>
@@ -22,42 +22,42 @@ if ($_SESSION['writable'] == 'Y') {
 <input type="hidden" name="razdelID" value="'.$razdelID.'">
 </form>';
 	} else {
-		$razdelID = $_GET['razdelID'];
-		$podrazdel = trim($_GET['podrazdel']);
-		$name = trim($_GET['name']);
-		$comment = trim($_GET['comment']);
-		$number = trim($_GET['number']);
+	    $razdelID = $_GET['razdelID'];
+	    $podrazdel = trim($_GET['podrazdel']);
+	    $name = trim($_GET['name']);
+	    $comment = trim($_GET['comment']);
+	    $number = trim($_GET['number']);
 
-		// Ищем свободный podrazdelID
-		$query = "SELECT MAX(`podrazdelID`) FROM `podrazdel`";
-		$podrazdelID = nextID($query);
+	    // Ищем свободный podrazdelID
+	    $query = "SELECT MAX(`podrazdelID`) FROM `podrazdel`";
+	    $podrazdelID = nextID($query);
 
-		// Ищем свободный serviceID
-		$query = "SELECT MAX(`serviceID`) FROM `service`";
-		$serviceID = nextID($query);
+	    // Ищем свободный serviceID
+	    $query = "SELECT MAX(`serviceID`) FROM `service`";
+	    $serviceID = nextID($query);
 
-		// Ищем свободный numberID
-		$query = "SELECT MAX(`numberID`) FROM `number`";
-		$numberID = nextID($query);
+	    // Ищем свободный numberID
+	    $query = "SELECT MAX(`numberID`) FROM `number`";
+	    $numberID = nextID($query);
 
-		// Вставляем данные в таблицу podrazdel
-		$query = "INSERT INTO podrazdel VALUES ('$podrazdelID','$podrazdel')";
-		mysql_query($query) or die ("Query failed");
+	    // Вставляем данные в таблицу podrazdel
+	    $query = "INSERT INTO podrazdel VALUES ('$podrazdelID','$podrazdel')";
+	    mysql_query($query) or die ("Query failed");
 
-		// Вставляем данные в таблицу service
-		$query = "INSERT INTO service VALUES ('$serviceID','$name','$comment','$podrazdelID','$razdelID')";
-		mysql_query($query) or die ("Query failed");
+	    // Вставляем данные в таблицу service
+	    $query = "INSERT INTO service VALUES ('$serviceID','$name','$comment','$podrazdelID','$razdelID')";
+	    mysql_query($query) or die ("Query failed");
 
-		// Вставляем данные в таблицу number
-		$query = "INSERT INTO number VALUES ('$numberID','$number','$serviceID')";
-		mysql_query($query) or die ("Query failed");
+	    // Вставляем данные в таблицу number
+	    $query = "INSERT INTO number VALUES ('$numberID','$number','$serviceID')";
+	    mysql_query($query) or die ("Query failed");
 
-		print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=" . $razdelID . "\">";
-		print '&nbsp;<div align="center"><h4>Новый подраздел был добавлен.</h4>';
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=" . $razdelID . "\">";
+	    print '&nbsp;<div align="center"><h4>Новый подраздел был добавлен.</h4>';
 	}
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

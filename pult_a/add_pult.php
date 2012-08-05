@@ -1,9 +1,9 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	if (empty($_GET["pultSort"])) {
-		print '<form action='.$_SERVER["PHP_SELF"].' method="get">
+	    print '<form action='.$_SERVER["PHP_SELF"].' method="get">
 <h3>Добавление нового пульта:</h3>
 <table class="small" cellspacing="1">
 <th colspan="3">Название пульта:</th>
@@ -15,22 +15,22 @@ if ($_SESSION['writable'] == 'Y') {
 <p><input type="submit" value="Добавить"></p>
 </form>';
 	} else {
-		$pultSort = trim($_GET['pultSort']);
-		$pultName = trim($_GET['pultName']);
+	    $pultSort = trim($_GET['pultSort']);
+	    $pultName = trim($_GET['pultName']);
 
-		// Ищем свободный pultID
-		$query = "SELECT MAX(`id`) FROM `pult_a_menu`";
-		$pultID = nextID($query);
+	    // Ищем свободный pultID
+	    $query = "SELECT MAX(`id`) FROM `pult_a_menu`";
+	    $pultID = nextID($query);
 
-		$query = "INSERT INTO pult_a_menu VALUES ('$pultID','$pultSort','$pultName')";
-		mysql_query($query) or die ("Query failed");
+	    $query = "INSERT INTO pult_a_menu VALUES ('$pultID','$pultSort','$pultName')";
+	    mysql_query($query) or die ("Query failed");
 
-		print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/pult_a/\">";
-		print '&nbsp;<div align="center"><h4>Новый пульт был добавлен.</h4>';
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/pult_a/\">";
+	    print '&nbsp;<div align="center"><h4>Новый пульт был добавлен.</h4>';
 	}
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

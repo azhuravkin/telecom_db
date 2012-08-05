@@ -11,5 +11,6 @@
     <!--<tr><td><b><a href='gts/'>Телефоны ГТС</a><b></td></tr>-->
     <!--<tr><td><b><a href='other/'>Прочая информация</a><b></td></tr>-->
 </table>
-</body>
-</html>
+<?php
+    include "footer.php";
+?>

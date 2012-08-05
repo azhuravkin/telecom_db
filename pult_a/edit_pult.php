@@ -1,9 +1,9 @@
 <?php
+    include "../header.php";
 
-$id = $_GET['id'];
-include "../header.php";
+    $id = $_GET['id'];
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	$query = "SELECT * FROM pult_a_menu WHERE id = '$id'";
 	$result = mysql_query($query);
 	$row = mysql_fetch_assoc($result);
@@ -35,35 +35,33 @@ if ($_SESSION['writable'] == 'Y') {
 	print '<form action="update_pult_data.php" method="post">';
 	print "\n<input type=\"hidden\" name=\"id\" value=\"$id\">";
 
-	$i = 0;
-	while ($row = mysql_fetch_assoc($result)) {
-		print "\n<tr>\n\t";
-		print "<input type='hidden' name='pultID[$i]' value='";
-		print $row['id'];
-		print "'>\n<td width='25%'>";
-		print "<input type='text' class='text' name='abonent[$i]' value='";
-		print $row['abonent'];
-		print "'></td>\n<td width='10%'>";
-		print "<input type='text' class='text' name='dlu_pult[$i]' value='";
-		print $row['dlu_pult'];
-		print "'></td>\n<td width='10%'>";
-		print "<input type='text' class='text' name='kross_pult[$i]' value='";
-		print $row['kross_pult'];
-		print "'></td>\n<td width='10%'>";
-		print "<input type='text' class='text' name='dlu_abonent[$i]' value='";
-		print $row['dlu_abonent'];
-		print "'></td>\n<td width='10%'>";
-		print "<input type='text' class='text' name='kross_abonent[$i]' value='";
-		print $row['kross_abonent'];
-		print "'></td>\n<td width='30%'>";
-		print "<input type='text' class='text' name='comment[$i]' value='";
-		print $row['comment'];
-		print "'></td>\n";
-		print "<td align='center' width='5%'>";
-		print "<input type='checkbox' name='del_pult_data[$i]' value='";
-		print $row['id'];
-		print "'>\n</td></tr>";
-		$i++;
+	while ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
+	    print "\n<tr>\n\t";
+	    print "<input type='hidden' name='pultID[$i]' value='";
+	    print $row['id'];
+	    print "'>\n<td width='25%'>";
+	    print "<input type='text' class='text' name='abonent[$i]' value='";
+	    print $row['abonent'];
+	    print "'></td>\n<td width='10%'>";
+	    print "<input type='text' class='text' name='dlu_pult[$i]' value='";
+	    print $row['dlu_pult'];
+	    print "'></td>\n<td width='10%'>";
+	    print "<input type='text' class='text' name='kross_pult[$i]' value='";
+	    print $row['kross_pult'];
+	    print "'></td>\n<td width='10%'>";
+	    print "<input type='text' class='text' name='dlu_abonent[$i]' value='";
+	    print $row['dlu_abonent'];
+	    print "'></td>\n<td width='10%'>";
+	    print "<input type='text' class='text' name='kross_abonent[$i]' value='";
+	    print $row['kross_abonent'];
+	    print "'></td>\n<td width='30%'>";
+	    print "<input type='text' class='text' name='comment[$i]' value='";
+	    print $row['comment'];
+	    print "'></td>\n";
+	    print "<td align='center' width='5%'>";
+	    print "<input type='checkbox' name='del_pult_data[$i]' value='";
+	    print $row['id'];
+	    print "'>\n</td></tr>";
 	}
 	print "</table>
 <p><table width='1%'><tr><td><input type='submit' value='Сохранить'>
@@ -71,9 +69,9 @@ if ($_SESSION['writable'] == 'Y') {
 <td><input type='hidden' name='id' value='$id'>
 <input type='submit' value='Добавить запись'>
 </form></td></tr></table></p>\n";
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

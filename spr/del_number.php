@@ -1,7 +1,7 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	$razdelID = trim($_GET['razdelID']);
 	$numberID = trim($_GET['numberID']);
 
@@ -10,7 +10,7 @@ if ($_SESSION['writable'] == 'Y') {
 	$result = mysql_query($query) or die ("Query failed");
 
 	while ($row = mysql_fetch_assoc($result)) {
-		$serviceID = $row['serviceID'];
+	    $serviceID = $row['serviceID'];
 	}
 
 	// Сколько номеров принадлежит этой службе
@@ -20,27 +20,27 @@ if ($_SESSION['writable'] == 'Y') {
 
 	// Если у данной службы только один номер:
 	if ($rows == 1) {
-		// Какому подразделу принадлежит служба
-		$query = "SELECT podrazdelID FROM service WHERE serviceID = '$serviceID'";
-		$result = mysql_query($query) or die ("Query failed");
+	    // Какому подразделу принадлежит служба
+	    $query = "SELECT podrazdelID FROM service WHERE serviceID = '$serviceID'";
+	    $result = mysql_query($query) or die ("Query failed");
 
-		while ($row = mysql_fetch_assoc($result)) {
-			$podrazdelID = $row['podrazdelID'];
-		}
+	    while ($row = mysql_fetch_assoc($result)) {
+		$podrazdelID = $row['podrazdelID'];
+	    }
 
-		// Сколько служб принадлежит данному подразделу
-		$query = "SELECT serviceID FROM service WHERE podrazdelID = '$podrazdelID'";
-		$results = mysql_query($query) or die ("Query failed");
-		$rows = mysql_num_rows($results);
+	    // Сколько служб принадлежит данному подразделу
+	    $query = "SELECT serviceID FROM service WHERE podrazdelID = '$podrazdelID'";
+	    $results = mysql_query($query) or die ("Query failed");
+	    $rows = mysql_num_rows($results);
 
-		// Если у данного подраздела только одна служба:
-		if ($rows == 1) {
-			$query = "DELETE FROM podrazdel WHERE podrazdelID = '$podrazdelID'";
-			mysql_query($query) or die ("Query failed");
-		}
-
-		$query = "DELETE FROM service WHERE serviceID = '$serviceID'";
+	    // Если у данного подраздела только одна служба:
+	    if ($rows == 1) {
+		$query = "DELETE FROM podrazdel WHERE podrazdelID = '$podrazdelID'";
 		mysql_query($query) or die ("Query failed");
+	    }
+
+	    $query = "DELETE FROM service WHERE serviceID = '$serviceID'";
+	    mysql_query($query) or die ("Query failed");
 	}
 
 	// Удалить телефонный номер
@@ -49,9 +49,9 @@ if ($_SESSION['writable'] == 'Y') {
 
 	print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=" . $razdelID . "\">";
 	print '&nbsp;<div align="center"><h4>Телефонный номер или служба была удалёна.</h4>';
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

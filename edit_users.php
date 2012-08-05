@@ -41,6 +41,6 @@
     } else {
 	goHome();
     }
+
+    include "footer.php";
 ?>
-</body>
-</html>

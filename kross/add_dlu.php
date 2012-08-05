@@ -1,9 +1,9 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	if (empty($_POST["dluSort"])) {
-		print '<form action='.$_SERVER["PHP_SELF"].' method="post">
+	    print '<form action='.$_SERVER["PHP_SELF"].' method="post">
 <h3>Добавление нового DLU:</h3>
 <table class="small" width="40%" cellspacing="1">
 <th colspan="3">Название DLU:</th>
@@ -16,31 +16,31 @@ if ($_SESSION['writable'] == 'Y') {
 <p><input type="submit" value="Добавить"></p>
 </form>';
 	} else {
-		$dluSort = trim($_POST['dluSort']);
-		$dluName = trim($_POST['dluName']);
+	    $dluSort = trim($_POST['dluSort']);
+	    $dluName = trim($_POST['dluName']);
 
-		// Ищем свободный dluID
-		$query = "SELECT MAX(`dluID`) FROM `dlu`";
-		$dluID = nextID($query);
+	    // Ищем свободный dluID
+	    $query = "SELECT MAX(`dluID`) FROM `dlu`";
+	    $dluID = nextID($query);
 
-		$query = "INSERT INTO `dlu` VALUES ('$dluID', '$dluSort', '$dluName')";
-		mysql_query($query) or die ("Query failed");
+	    $query = "INSERT INTO `dlu` VALUES ('$dluID', '$dluSort', '$dluName')";
+	    mysql_query($query) or die ("Query failed");
 
-		// Создаём пустую таблицу dlu
-		$query = "INSERT INTO `para` (`para`, `dluID`) VALUES ('00', '$dluID')";
+	    // Создаём пустую таблицу dlu
+	    $query = "INSERT INTO `para` (`para`, `dluID`) VALUES ('00', '$dluID')";
 
-		for ($count = 1; $count < 100; $count++) {
-			$query .= ", ('".sprintf("%02d", $count)."', '$dluID')";
-		}
+	    for ($count = 1; $count < 100; $count++) {
+		$query .= ", ('".sprintf("%02d", $count)."', '$dluID')";
+	    }
 
-		// Вставляем данные в таблицу para
-		mysql_query($query) or die ("Query failed");
+	    // Вставляем данные в таблицу para
+	    mysql_query($query) or die ("Query failed");
 
-		print '<meta http-equiv="Refresh" content="1; URL=/db/kross/">&nbsp;<div align="center"><h4>Новый DLU добавлен.</h4>';
+	    print '<meta http-equiv="Refresh" content="1; URL=/db/kross/">&nbsp;<div align="center"><h4>Новый DLU добавлен.</h4>';
 	}
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

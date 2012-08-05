@@ -1,12 +1,12 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	$razdelID = $_GET['razdelID'];
 	$podrazdelID = $_GET['podrazdelID'];
 
 	if ((empty($_GET["name"])) or (empty($_GET["number"]))) {
-		print '<form action='.$_SERVER["PHP_SELF"].' method="get">
+	    print '<form action='.$_SERVER["PHP_SELF"].' method="get">
 <h3>Добавление новой службы:</h3>
 <table class="small" cellspacing="1" width="65%">
 <th>Название</th>
@@ -22,34 +22,34 @@ if ($_SESSION['writable'] == 'Y') {
 <input type="hidden" name="podrazdelID" value="'.$podrazdelID.'">
 </form>';
 	} else {
-		$razdelID = $_GET['razdelID'];
-		$podrazdelID = $_GET['podrazdelID'];
-		$name = trim($_GET['name']);
-		$comment = trim($_GET['comment']);
-		$number = trim($_GET['number']);
+	    $razdelID = $_GET['razdelID'];
+	    $podrazdelID = $_GET['podrazdelID'];
+	    $name = trim($_GET['name']);
+	    $comment = trim($_GET['comment']);
+	    $number = trim($_GET['number']);
 
-		// Ищем свободный serviceID
-		$query = "SELECT MAX(`serviceID`) FROM `service`";
-		$serviceID = nextID($query);
+	    // Ищем свободный serviceID
+	    $query = "SELECT MAX(`serviceID`) FROM `service`";
+	    $serviceID = nextID($query);
 
-		// Ищем свободный numberID
-		$query = "SELECT MAX(`numberID`) FROM `number`";
-		$numberID = nextID($query);
+	    // Ищем свободный numberID
+	    $query = "SELECT MAX(`numberID`) FROM `number`";
+	    $numberID = nextID($query);
 
-		// Вставляем данные в таблицу service
-		$query = "INSERT INTO service VALUES ('$serviceID','$name','$comment','$podrazdelID','$razdelID')";
-		mysql_query($query) or die ("Query failed");
+	    // Вставляем данные в таблицу service
+	    $query = "INSERT INTO service VALUES ('$serviceID','$name','$comment','$podrazdelID','$razdelID')";
+	    mysql_query($query) or die ("Query failed");
 
-		// Вставляем данные в таблицу number
-		$query = "INSERT INTO number VALUES ('$numberID','$number','$serviceID')";
-		mysql_query($query) or die ("Query failed");
+	    // Вставляем данные в таблицу number
+	    $query = "INSERT INTO number VALUES ('$numberID','$number','$serviceID')";
+	    mysql_query($query) or die ("Query failed");
 
-		print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=" . $razdelID . "\">";
-		print '&nbsp;<div align="center"><h4>Новая служба добавлена.</h4>';
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=" . $razdelID . "\">";
+	    print '&nbsp;<div align="center"><h4>Новая служба добавлена.</h4>';
 	}
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>

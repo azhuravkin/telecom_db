@@ -1,9 +1,9 @@
 <?php
-include "../header.php";
+    include "../header.php";
 
-if ($_SESSION['writable'] == 'Y') {
+    if ($_SESSION['writable'] == 'Y') {
 	if (empty($_POST["name"])) {
-		print '<form action=' . $_SERVER["PHP_SELF"] . ' method="post">
+	    print '<form action=' . $_SERVER["PHP_SELF"] . ' method="post">
 <h3>Добавление нового раздела:</h3>
 <table class="small" cellspacing="1">
 <th>Название раздела:</th>
@@ -13,22 +13,21 @@ if ($_SESSION['writable'] == 'Y') {
 <p><input type="submit" value="Добавить"></p>
 </form>';
 	} else {
-		$name = trim($_POST['name']);
+	    $name = trim($_POST['name']);
 
-		// Ищем свободный razdelID
-		$query = "SELECT MAX(`razdelID`) FROM `razdel`";
-		$razdelID = nextID($query);
+	    // Ищем свободный razdelID
+	    $query = "SELECT MAX(`razdelID`) FROM `razdel`";
+	    $razdelID = nextID($query);
 
-		$query = "INSERT INTO razdel VALUES ('$razdelID','$name')";
-		mysql_query($query) or die ("Query failed");
+	    $query = "INSERT INTO razdel VALUES ('$razdelID','$name')";
+	    mysql_query($query) or die ("Query failed");
 
-		print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/\">";
-		print '&nbsp;<div align="center"><h4>Новый раздел был добавлен.</h4>';
-
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/\">";
+	    print '&nbsp;<div align="center"><h4>Новый раздел был добавлен.</h4>';
 	}
-} else {
+    } else {
 	goHome();
-}
+    }
+
+    include "../footer.php";
 ?>
-</body>
-</html>
