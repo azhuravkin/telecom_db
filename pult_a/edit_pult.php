@@ -35,7 +35,7 @@
 	print '<form action="update_pult_data.php" method="post">';
 	print "\n<input type=\"hidden\" name=\"id\" value=\"$id\">";
 
-	while ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
+	for ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
 	    print "\n<tr>\n\t";
 	    print "<input type='hidden' name='pultID[$i]' value='";
 	    print $row['id'];
