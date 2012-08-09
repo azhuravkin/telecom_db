@@ -3,7 +3,7 @@
 
     if ($_SESSION['writable'] == 'Y') {
 	if (empty($_POST["dluSort"])) {
-	    print '<form action='.$_SERVER["PHP_SELF"].' method="post">
+	    print '<form method="post">
 <h3>Добавление нового DLU:</h3>
 <table class="small" width="40%" cellspacing="1">
 <th colspan="3">Название DLU:</th>

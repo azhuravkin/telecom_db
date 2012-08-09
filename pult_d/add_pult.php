@@ -3,7 +3,7 @@
 
     if ($_SESSION['writable'] == 'Y') {
 	if (empty($_POST["pultSort"])) {
-	    print '<form action=' . $_SERVER["PHP_SELF"] . ' method="post">
+	    print '<form method="post">
 <h3>Добавление нового цифрового пульта:</h3>
 <table class="small" cellspacing="1">
 <th colspan="3">Название пульта:</th>

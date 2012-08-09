@@ -5,7 +5,7 @@
 	$razdelID = $_GET['razdelID'];
 
 	if (empty($_GET["podrazdel"]) or (empty($_GET["name"])) or (empty($_GET["number"]))) {
-	    print '<form action='.$_SERVER["PHP_SELF"].' method="get">
+	    print '<form method="get">
 <h3><table align="center">
 <tr><td><input type="text" name="podrazdel" size="40"></td></tr>
 </table></h3>

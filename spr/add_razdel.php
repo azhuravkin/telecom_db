@@ -3,7 +3,7 @@
 
     if ($_SESSION['writable'] == 'Y') {
 	if (empty($_POST["name"])) {
-	    print '<form action=' . $_SERVER["PHP_SELF"] . ' method="post">
+	    print '<form method="post">
 <h3>Добавление нового раздела:</h3>
 <table class="small" cellspacing="1">
 <th>Название раздела:</th>
@@ -19,7 +19,7 @@
 	    $query = "SELECT MAX(`razdelID`) FROM `razdel`";
 	    $razdelID = nextID($query);
 
-	    $query = "INSERT INTO razdel VALUES ('$razdelID','$name')";
+	    $query = "INSERT INTO `razdel` VALUES ('$razdelID', '$name')";
 	    mysql_query($query) or die ("Query failed");
 
 	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/\">";

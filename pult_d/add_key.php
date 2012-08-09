@@ -24,7 +24,7 @@
 <th>Pen</th>
 <th>Кросс</th>';
 
-	    print "<form action='".$_SERVER["PHP_SELF"]."' method='post'>\n";
+	    print "<form method='post'>\n";
 	    print "<input type='hidden' name='pultID' value='$pultID'>\n";
 	    print "<tr><td width='5%'>\n";
 	    print "<input type='text' class='text' name='key'>";

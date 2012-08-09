@@ -6,7 +6,7 @@
 	$podrazdelID = $_GET['podrazdelID'];
 
 	if ((empty($_GET["name"])) or (empty($_GET["number"]))) {
-	    print '<form action='.$_SERVER["PHP_SELF"].' method="get">
+	    print '<form method="get">
 <h3>Добавление новой службы:</h3>
 <table class="small" cellspacing="1" width="65%">
 <th>Название</th>
