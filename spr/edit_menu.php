@@ -3,26 +3,21 @@
 
     if ($_SESSION['writable'] == 'Y') {
 	print "<h3>Редактирование разделов справки:</h3>\n";
-	print "<table class='small' cellspacing='1'>\n";
-	print "<th>Название раздела:</th>\n";
-	print "<th>Удалить:</th>\n";
+	print "<table class='small' cellspacing='1'>\n<tr>\n\t";
+	print "<th>Название раздела:</th>\n\t<th>Удалить:</th>\n</tr>\n";
 	print "<form action='update_razdel_menu.php' method='post'>\n";
 
-	$query = "SELECT * FROM razdel ORDER BY name";
+	$query = "SELECT * FROM `razdel` ORDER BY `name`";
 	$result = mysql_query($query);
 
-	for ($i = 0; $row = mysql_fetch_assoc($result); $i++) {
-	    print "\n<tr>\n<td>";
-	    print "<input type='text' name=\"razdelName[$i]\" size='40' value='";
+	while ($row = mysql_fetch_array($result)) {
+	    $razdelID = $row['razdelID'];
+	    print "<tr>\n\t<td>";
+	    print "<input type='text' name=\"razdelName[$razdelID]\" size='40' value='";
 	    print $row['name'];
-	    print "'>\n<input type='hidden' name=\"razdelID[$i]\" value='";
+	    print "'></td>\n\t<td align='center'><input type='checkbox' name=\"del_razdelID[$razdelID]\" value='";
 	    print $row['razdelID'];
-	    print "'></td>\n";
-	    print "<td align='center'>\n";
-	    print "<input type='checkbox' name=\"del_razdelID[$i]\" value='";
-	    print $row['razdelID'];
-	    print "'>\n</td>";
-	    print "</tr>";
+	    print "'></td>\n</tr>\n";
 	}
 
 	print '</table><p>
