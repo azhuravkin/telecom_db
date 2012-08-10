@@ -25,9 +25,9 @@
 	    print "<table class='small' cellspacing='1' width='100%'>\n";
 	    print "<tr><th>Название</th><th>Ф.И.О.</th><th>Номер</th></tr>";
 
-	    $query3 = "SELECT `service`.`serviceID`, `service`.`name`, `service`.`comment`, `number`.`numberID`, `number`.`telephone`
-		FROM `service`, `number` WHERE `number`.`serviceID` = `service`.`serviceID`
-		AND `service`.`podrazdelID` = '$podrazdelID' ORDER BY `service`.`serviceID`";
+	    $query3 = "SELECT `service`.*, `number`.`numberID`, `number`.`telephone` FROM `service`
+		LEFT JOIN `number` ON `number`.`serviceID` = `service`.`serviceID`
+		WHERE `service`.`podrazdelID` = '$podrazdelID' ORDER BY `service`.`serviceID`";
 	    $result3 = mysql_query($query3);
 
 	    for ($oldID = 0; $row3 = mysql_fetch_array($result3);) {
@@ -44,8 +44,11 @@
 		    }
 		    print "<tr>\n\t<td width='50%'><input type='text' class='text' name='serviceName[$serviceID]' value='$name'></td>\n";
 		    print "\t<td width='30%'><input type='text' class='text' size='50' name='serviceComment[$serviceID]' value='$comment'></td>\n";
-		    print "\t<td width='20%'><table><tr>\n\t\t<td><input type='text' size='9' name='number[$numberID]' value='$telephone'></td>\n";
-		    print "\t\t<td><input type='checkbox' name='del_number[$numberID]'></td>\n\t\t<td>Удалить</td>\n";
+		    print "\t<td width='20%'><table><tr>\n\t\t";
+		    if ($numberID) {
+			print "<td><input type='text' size='9' name='number[$numberID]' value='$telephone'></td>\n";
+			print "\t\t<td><input type='checkbox' name='del_number[$numberID]'></td>\n\t\t<td>Удалить</td>\n";
+		    }
 		    print "\t\t<td><input type='text' class='text' size='9' name='new_number[$serviceID]'></td></tr></table>";
 
 		    $oldID = $newID;
