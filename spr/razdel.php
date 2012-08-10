@@ -5,11 +5,12 @@
     $razdelID = $_GET['razdelID'];
 
     // Получить уникальные podrazdelID из данного раздела
-    $query1 = "SELECT DISTINCT podrazdelID AS count FROM service WHERE service.razdelID = '$razdelID' ORDER BY service.podrazdelID";
+    $query1 = "SELECT DISTINCT(`podrazdelID`) AS `count` FROM `service` WHERE `razdelID` = '$razdelID' ORDER BY `podrazdelID`";
     $result1 = mysql_query($query1);
-    while ($row1 = mysql_fetch_assoc($result1)) {
+
+    while ($row1 = mysql_fetch_array($result1)) {
 	$podrazdelID = $row1['count'];
-	$query2 = "SELECT name FROM podrazdel WHERE podrazdel.podrazdelID = '$podrazdelID'";
+	$query2 = "SELECT `name` FROM `podrazdel` WHERE `podrazdelID` = '$podrazdelID'";
 	$result2 = mysql_query($query2);
 	$row2 = mysql_fetch_assoc($result2);
 
@@ -20,9 +21,9 @@
 <th>Ф.И.О.</th>
 <th>Номер</th>';
 
-	$query3 = "SELECT service.serviceID, service.name, service.comment, number.telephone
-FROM service, number WHERE number.serviceID = service.serviceID
-AND service.podrazdelID = '$podrazdelID' ORDER BY service.serviceID";
+	$query3 = "SELECT `service`.*, number.telephone FROM `service`
+	    LEFT JOIN `number` ON `number`.`serviceID` = `service`.`serviceID`
+	    WHERE `service`.`podrazdelID` = '$podrazdelID' ORDER BY `service`.`serviceID`";
 	$result3 = mysql_query($query3);
 
 	$oldID = 0;
