@@ -62,4 +62,34 @@
 
 	print "</td></tr>\n</table>\n";
     }
+
+    function print_numbers_table() {
+	print "<table width='100%'><tbody align='center' valign='middle'>\n";
+	print "<tr>\n\t<td align='left'>Всего номеров:</td>\n\t<td>";
+
+	// Сколько всего уникальных номеров в базе
+	$query = "SELECT COUNT(DISTINCT(`telephone`)) AS `count` FROM `number`";
+	$result = mysql_query($query);
+	$row = mysql_fetch_array($result);
+	$all = $row['count'];
+	print "$all</td>\n</tr><tr>\n\t<td align='left'>Чисто-городских:</td>\n\t<td>";
+
+	// Сколько чисто-городских номеров в базе
+	$query = "SELECT COUNT(DISTINCT(`telephone`)) AS `count` FROM `number` WHERE `telephone` LIKE '2__-__-__'";
+	$result = mysql_query($query);
+	$row = mysql_fetch_array($result);
+	$onlyGorod = $row['count'];
+	print "$onlyGorod</td>\n</tr><tr>\n\t<td align='left'>Городских:</td>\n\t<td>";
+
+	// Сколько городских номеров в базе
+	$query = "SELECT COUNT(DISTINCT(`telephone`)) AS `count` FROM `number` WHERE `telephone` LIKE '2_-__' OR `telephone` LIKE '9_-__'";
+	$result = mysql_query($query);
+	$row = mysql_fetch_array($result);
+	$gorod = $row['count'];
+	print "$gorod</td>\n</tr><tr>\n\t<td align='left'>Внутренних:</td>\n\t<td>";
+
+	// Сколько остальных (внутренних)
+	print $all - ($onlyGorod + $gorod);
+	print "</td>\n</tr></table>\n";
+    }
 ?>
