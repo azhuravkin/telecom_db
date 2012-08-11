@@ -2,7 +2,7 @@
     include "../header.php";
 
     if ($_SESSION['writable'] == 'Y') {
-	$razdelID = $_POST['razdelID'];
+	$razdelID = $_GET['razdelID'];
 
 	if (empty($_POST['podrazdel'])) {
 	    print "<form method='post'>

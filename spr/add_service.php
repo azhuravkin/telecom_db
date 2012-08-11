@@ -5,11 +5,17 @@
 	$razdelID = $_POST['razdelID'];
 
 	if (empty($_POST["name"])) {
-	    print "<form method='post'>\n<h3><select name='podrazdelID'>";
-
 	    // Получить название данного подраздела
 	    $query = "SELECT * FROM `podrazdel` WHERE `razdelID` = '$razdelID' ORDER BY `podrazdelID`";
 	    $result = mysql_query($query);
+
+	    if (mysql_num_rows($result) == 0) {
+		print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=".$razdelID."\">";
+		print "&nbsp;<div align=\"center\"><h4>Сначала добавьте подраздел!</h4>\n";
+		exit;
+	    }
+
+	    print "<form method='post'>\n<h3><select name='podrazdelID'>";
 
 	    while ($row = mysql_fetch_array($result)) {
 		$podrazdelID = $row['podrazdelID'];

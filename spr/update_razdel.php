@@ -47,26 +47,38 @@
 		}
 	    }
 
+	    if (isset($_POST['del_service'][$podrazdelID])) {
+		foreach ($_POST['del_service'][$podrazdelID] as $serviceID => $val) {
+		    // Удалить телефоны, принадлежащие этому сервису
+		    $query = "DELETE FROM `number` WHERE `serviceID` = '$serviceID'";
+		    mysql_query($query) or die ("Query failed 6");
+		}
+
+		// Удалить данные из таблицы service
+		$query = "DELETE FROM `service` WHERE `serviceID` = '$serviceID'";
+		mysql_query($query) or die ("Query failed 7");
+	    }
+
 	    if (isset($_POST['del_podrazdel'][$podrazdelID])) {
 		// Удалить данные из таблицы podrazdel
 		$query = "DELETE FROM `podrazdel` WHERE `podrazdelID` = '$podrazdelID'";
-		mysql_query($query) or die ("Query failed 6");
+		mysql_query($query) or die ("Query failed 8");
 
 		// Получить все сервисы, входящие в подраздел
 		$query = "SELECT `serviceID` FROM `service` WHERE `podrazdelID` = '$podrazdelID'";
-		$result = mysql_query($query) or die ("Query failed 7");
+		$result = mysql_query($query) or die ("Query failed 9");
 
 		while ($row = mysql_fetch_assoc($result)) {
 		    $serviceID = $row['serviceID'];
 
 		    // Удалить телефоны, принадлежащие этим сервисам
 		    $query = "DELETE FROM `number` WHERE `serviceID` = '$serviceID'";
-		    mysql_query($query) or die ("Query failed 8");
+		    mysql_query($query) or die ("Query failed 10");
 		}
 
 		// Удалить данные из таблицы service
 		$query = "DELETE FROM `service` WHERE `podrazdelID` = '$podrazdelID'";
-		mysql_query($query) or die ("Query failed 9");
+		mysql_query($query) or die ("Query failed 11");
 	    }
 	}
 
