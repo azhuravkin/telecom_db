@@ -1,23 +1,20 @@
 <?php
     include "../header.php";
 
-    $razdelID = $_GET['razdelID'];
+    $razdelID = $_POST['razdelID'];
 
     if ($_SESSION['writable'] == 'Y') {
 	print "<form action='update_razdel.php' method='post'>\n";
 	print "<input type='hidden' name='razdelID' value='$razdelID'>\n";
 
 	// Получить уникальные podrazdelID из данного раздела
-	$query1 = "SELECT DISTINCT `podrazdelID` AS `podrazdelID` FROM `service`
-	    WHERE `service`.`razdelID` = '$razdelID' ORDER BY `service`.`podrazdelID`";
+	$query1 = "SELECT DISTINCT(`podrazdelID`) AS `podrazdelID`, `name` FROM `podrazdel`
+	    WHERE `razdelID` = '$razdelID' ORDER BY `podrazdelID`";
 	$result1 = mysql_query($query1);
 
 	while ($row1 = mysql_fetch_array($result1)) {
 	    $podrazdelID = $row1['podrazdelID'];
-	    $query2 = "SELECT * FROM `podrazdel` WHERE `podrazdelID` = '$podrazdelID'";
-	    $result2 = mysql_query($query2);
-	    $row2 = mysql_fetch_array($result2);
-	    $name = $row2['name'];
+	    $name = $row1['name'];
 
 	    print "<h3><table align='center' width='1%'>\n";
 	    print "<tr>\n\t<td><input type='text' size='40' name='podrazdelName[$podrazdelID]' value='$name'></td>\n";
@@ -27,18 +24,18 @@
 	    print "<table class='small' cellspacing='1' width='100%'>\n";
 	    print "<tr><th>Название</th><th>Ф.И.О.</th><th>Номер</th></tr>";
 
-	    $query3 = "SELECT `service`.*, `number`.`numberID`, `number`.`telephone` FROM `service`
+	    $query2 = "SELECT `service`.*, `number`.`numberID`, `number`.`telephone` FROM `service`
 		LEFT JOIN `number` ON `number`.`serviceID` = `service`.`serviceID`
 		WHERE `service`.`podrazdelID` = '$podrazdelID' ORDER BY `service`.`serviceID`";
-	    $result3 = mysql_query($query3);
+	    $result2 = mysql_query($query2);
 
-	    for ($oldID = 0; $row3 = mysql_fetch_array($result3);) {
-		$newID = $row3['serviceID'];
-		$serviceID = $row3['serviceID'];
-		$name = $row3['name'];
-		$comment = $row3['comment'];
-		$numberID = $row3['numberID'];
-		$telephone = $row3['telephone'];
+	    for ($oldID = 0; $row2 = mysql_fetch_array($result2);) {
+		$newID = $row2['serviceID'];
+		$serviceID = $row2['serviceID'];
+		$name = $row2['name'];
+		$comment = $row2['comment'];
+		$numberID = $row2['numberID'];
+		$telephone = $row2['telephone'];
 
 		if ($newID != $oldID) {
 		    if ($oldID) {

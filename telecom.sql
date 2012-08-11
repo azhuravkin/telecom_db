@@ -63,7 +63,8 @@ CREATE TABLE `para` (
 CREATE TABLE `podrazdel` (
   `podrazdelID` smallint(5) unsigned NOT NULL auto_increment,
   `name` varchar(128) NOT NULL default '',
-  PRIMARY KEY  (podrazdelID)
+  `razdelID` smallint(5) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`podrazdelID`)
 ) DEFAULT CHARSET=utf8;
 
 --
@@ -112,6 +113,5 @@ CREATE TABLE `service` (
   `name` varchar(128) NOT NULL default '',
   `comment` varchar(128) NOT NULL default '',
   `podrazdelID` smallint(5) unsigned NOT NULL default '0',
-  `razdelID` smallint(5) unsigned NOT NULL default '0',
   PRIMARY KEY (`serviceID`)
 ) DEFAULT CHARSET=utf8;

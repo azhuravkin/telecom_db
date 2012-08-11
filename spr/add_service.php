@@ -37,7 +37,7 @@
 	    $numberID = nextID($query);
 
 	    // Вставляем данные в таблицу service
-	    $query = "INSERT INTO service VALUES ('$serviceID','$name','$comment','$podrazdelID','$razdelID')";
+	    $query = "INSERT INTO service VALUES ('$serviceID','$name','$comment','$podrazdelID')";
 	    mysql_query($query) or die ("Query failed");
 
 	    // Вставляем данные в таблицу number

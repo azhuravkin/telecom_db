@@ -15,31 +15,25 @@
 		$query = "DELETE FROM `razdel` WHERE `razdelID` = '$razdelID'";
 		mysql_query($query) or die ("Query failed 1");
 
-		// Получить все podrazdelID, входящие в раздел
-		$query = "SELECT `podrazdelID` FROM `service` WHERE `razdelID` = '$razdelID'";
-		$result = mysql_query($query) or die ("Query failed 2");
-
-		while ($row = mysql_fetch_array($result)) {
-		    // Удалить данные из таблицы podrazdel
-		    $podrazdelID = $row['podrazdelID'];
-		    $query = "DELETE FROM `podrazdel` WHERE `podrazdelID` = '$podrazdelID'";
-		    mysql_query($query) or die ("Query failed 3");
-		}
+		// Удалить данные из таблицы podrazdel
+		$query = "DELETE FROM `podrazdel` WHERE `razdelID` = '$razdelID'";
+		mysql_query($query) or die ("Query failed 2");
 
 		// Получить все serviceID, входящие в раздел
-		$query = "SELECT `serviceID` FROM `service` WHERE `razdelID` = '$razdelID'";
-		$result = mysql_query($query) or die ("Query failed 4");
+		$query = "SELECT `service`.`serviceID` FROM `service`, `podrazdel`
+		    WHERE `service`.`podrazdelID` = `podrazdel`.`podrazdelID` AND `podrazdel`.`razdelID` = '$razdelID'";
+		$result = mysql_query($query) or die ("Query failed 3");
 
 		while ($row = mysql_fetch_array($result)) {
 		    // Удалить данные из таблицы number
 		    $serviceID = $row['serviceID'];
 		    $query = "DELETE FROM `number` WHERE `serviceID` = '$serviceID'";
+		    mysql_query($query) or die ("Query failed 4");
+
+		    // Удалить данные из таблицы service
+		    $query = "DELETE FROM `service` WHERE `serviceID` = '$serviceID'";
 		    mysql_query($query) or die ("Query failed 5");
 		}
-
-		// Удалить данные из таблицы service
-		$query = "DELETE FROM `service` WHERE `razdelID` = '$razdelID'";
-		mysql_query($query) or die ("Query failed 6");
 	    }
 	}
 
