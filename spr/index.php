@@ -34,7 +34,7 @@
 <tr><td align="left">Всего номеров:</td><td>';
 
     // Сколько всего уникальных номеров в базе
-    $query = "SELECT count(DISTINCT telephone) AS count FROM number";
+    $query = "SELECT COUNT(DISTINCT(`telephone`)) AS `count` FROM `number`";
     $result = mysql_query($query);
 
     while ($row = mysql_fetch_array($result)) {
@@ -44,7 +44,7 @@
     print '</td></tr><tr><td align="left">Чисто-городских:</td><td>';
 
     // Сколько чисто-городских номеров в базе
-    $query = "SELECT count(DISTINCT telephone) AS count FROM number WHERE telephone LIKE '2__-__-__'";
+    $query = "SELECT COUNT(DISTINCT(`telephone`)) AS `count` FROM `number` WHERE `telephone` LIKE '2__-__-__'";
     $result = mysql_query($query);
 
     while ($row = mysql_fetch_array($result)) {
@@ -55,7 +55,7 @@
     print '</td></tr><tr><td align="left">Городских:</td><td>';
 
     // Сколько номеров в базе на 2
-    $query = "SELECT count(DISTINCT telephone) AS count FROM number WHERE telephone LIKE '2_-__'";
+    $query = "SELECT COUNT(DISTINCT(`telephone`)) AS `count` FROM `number` WHERE `telephone` LIKE '2_-__'";
     $result = mysql_query($query);
 
     while ($row = mysql_fetch_array($result)) {
@@ -63,7 +63,7 @@
     }
 
     // Сколько номеров в базе на 9
-    $query = "SELECT count(DISTINCT telephone) AS count FROM number WHERE telephone LIKE '9_-__'";
+    $query = "SELECT COUNT(DISTINCT(`telephone`)) AS `count` FROM `number` WHERE `telephone` LIKE '9_-__'";
     $result = mysql_query($query);
 
     while ($row = mysql_fetch_array($result)) {
@@ -80,7 +80,7 @@
 
     print '</td></tr></table></td></tr><table>';
 
-    $query = "SELECT * FROM razdel ORDER BY name";
+    $query = "SELECT * FROM `razdel` ORDER BY `name`";
     $result = mysql_query($query);
 
     while ($row = mysql_fetch_assoc($result)) {
