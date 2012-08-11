@@ -43,7 +43,7 @@
     }
 
     if ($_SESSION['writable'] == 'Y') {
-	print "<p><form action='edit_razdel.php' method='post'>
+	print "<p><form action='edit_razdel.php' method='get'>
 <input type='hidden' name='razdelID' value='$razdelID'>
 <input type='submit' value='Редактировать'>
 </form></p>\n";

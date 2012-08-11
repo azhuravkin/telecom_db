@@ -2,8 +2,8 @@
     include "../header.php";
 
     if ($_SESSION['writable'] == 'Y') {
-	$razdelID = $_GET['razdelID'];
-	$podrazdelID = $_GET['podrazdelID'];
+	$razdelID = $_POST['razdelID'];
+	$podrazdelID = $_POST['podrazdelID'];
 
 	if ((empty($_GET["name"])) or (empty($_GET["number"]))) {
 	    print '<form method="get">
@@ -22,11 +22,11 @@
 <input type="hidden" name="podrazdelID" value="'.$podrazdelID.'">
 </form>';
 	} else {
-	    $razdelID = $_GET['razdelID'];
-	    $podrazdelID = $_GET['podrazdelID'];
-	    $name = trim($_GET['name']);
-	    $comment = trim($_GET['comment']);
-	    $number = trim($_GET['number']);
+	    $razdelID = $_POST['razdelID'];
+	    $podrazdelID = $_POST['podrazdelID'];
+	    $name = trim($_POST['name']);
+	    $comment = trim($_POST['comment']);
+	    $number = trim($_POST['number']);
 
 	    // Ищем свободный serviceID
 	    $query = "SELECT MAX(`serviceID`) FROM `service`";

@@ -1,7 +1,7 @@
 <?php
     include "../header.php";
 
-    $razdelID = $_POST['razdelID'];
+    $razdelID = $_GET['razdelID'];
 
     if ($_SESSION['writable'] == 'Y') {
 	print "<form action='update_razdel.php' method='post'>\n";
