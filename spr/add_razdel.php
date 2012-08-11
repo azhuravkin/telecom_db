@@ -15,11 +15,7 @@
 	} else {
 	    $name = trim($_POST['name']);
 
-	    // Ищем свободный razdelID
-	    $query = "SELECT MAX(`razdelID`) FROM `razdel`";
-	    $razdelID = nextID($query);
-
-	    $query = "INSERT INTO `razdel` VALUES ('$razdelID', '$name')";
+	    $query = "INSERT INTO `razdel` VALUES (NULL, '$name')";
 	    mysql_query($query) or die ("Query failed");
 
 	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/\">";
