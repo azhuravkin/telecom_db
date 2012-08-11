@@ -11,9 +11,9 @@
 	    $query = "UPDATE `podrazdel` SET `name` = '$podrazdelName' WHERE `podrazdelID` = '$podrazdelID'";
 	    mysql_query($query) or die ("Query failed 1");
 
-	    foreach ($_POST['serviceName'] as $serviceID => $service) {
+	    foreach ($_POST['serviceName'][$podrazdelID] as $serviceID => $service) {
 		$serviceName = trim($service);
-		$serviceComment = trim($_POST['serviceComment'][$serviceID]);
+		$serviceComment = trim($_POST['serviceComment'][$podrazdelID][$serviceID]);
 
 		// Изменить название и комментарий службы
 		$query = "UPDATE `service` SET `name` = '$serviceName', `comment` = '$serviceComment'
@@ -21,7 +21,7 @@
 		mysql_query($query) or die ("Query failed 2");
 	    }
 
-	    foreach ($_POST['number'] as $numberID => $number) {
+	    foreach ($_POST['number'][$podrazdelID] as $numberID => $number) {
 		$telephone = trim($number);
 
 		// Изменить телефонный номер
@@ -29,7 +29,7 @@
 		mysql_query($query) or die ("Query failed 3");
 	    }
 
-	    foreach ($_POST['new_number'] as $serviceID => $number) {
+	    foreach ($_POST['new_number'][$podrazdelID] as $serviceID => $number) {
 		$telephone = trim($number);
 
 		if (strlen($telephone)) {
@@ -39,8 +39,8 @@
 		}
 	    }
 
-	    if (isset($_POST['del_number'])) {
-		foreach ($_POST['del_number'] as $numberID => $val) {
+	    if (isset($_POST['del_number'][$podrazdelID])) {
+		foreach ($_POST['del_number'][$podrazdelID] as $numberID => $val) {
 		    // Удалить номер
 		    $query = "DELETE FROM `number` WHERE `numberID` = '$numberID'";
 		    mysql_query($query) or die ("Query failed 5");
