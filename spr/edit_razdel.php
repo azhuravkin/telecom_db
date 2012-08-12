@@ -4,6 +4,8 @@
     $razdelID = $_GET['razdelID'];
 
     if ($_SESSION['writable'] == 'Y') {
+	$string_podrazdel = "";
+	$string_service = "";
 	print "<form action='update_razdel.php' method='post'>\n";
 	print "<input type='hidden' name='razdelID' value='$razdelID'>\n";
 
@@ -15,6 +17,9 @@
 	    $podrazdelID = $row1['podrazdelID'];
 	    $name = $row1['name'];
 
+	    // Сохраняем все данные в переменную для подсчёта контрольной суммы
+	    $string_podrazdel .= concat($row1);
+
 	    print "<h3><table align='center'>\n";
 	    print "<tr>\n\t<td><input type='text' size='40' name='podrazdelName[$podrazdelID]' value='$name'></td>\n";
 	    print "\t<td><input type='checkbox' name='del_podrazdel[$podrazdelID]'></td>\n";
@@ -22,7 +27,8 @@
 
 	    $query2 = "SELECT `service`.*, `number`.`numberID`, `number`.`telephone` FROM `service`
 		LEFT JOIN `number` ON `number`.`serviceID` = `service`.`serviceID`
-		WHERE `service`.`podrazdelID` = '$podrazdelID' ORDER BY `service`.`serviceID`";
+		WHERE `service`.`podrazdelID` = '$podrazdelID'
+		ORDER BY `service`.`serviceID`, `number`.`telephone`";
 	    $result2 = mysql_query($query2);
 
 	    if (mysql_num_rows($result2)) {
@@ -57,10 +63,17 @@
 			print "\n\t\t<table><tr>\n\t\t<td><input type='text' size='9' name='number[$podrazdelID][$numberID]' value='$telephone'></td>\n";
 			print "\t\t<td><input type='checkbox' name='del_number[$podrazdelID][$numberID]'></td>\n\t\t<td>Удалить</td></tr></table>";
 		    }
+
+		    // Сохраняем все данные в переменную для подсчёта контрольной суммы
+		    $string_service .= concat($row2);
 		}
 		print "</td>\n\t<td align='middle' width='5%'><input type='checkbox' name='del_service[$podrazdelID][$serviceID]'></td>\n</tr>\n</table>\n";
 	    }
 	}
+	// Вычисляем контрольную сумму редактируемых данных
+	print "<input type='hidden' name='md5sum_podrazdel' value='".md5($string_podrazdel)."'>\n";
+	print "<input type='hidden' name='md5sum_service' value='".md5($string_service)."'>\n";
+
 	print "<p><input type='submit' value='Сохранить'></form>\n";
 	print "<form action='add_service.php' method='post'>\n";
 	print "<input type='hidden' name='razdelID' value='$razdelID'>";
