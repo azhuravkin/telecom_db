@@ -51,3 +51,9 @@ a:hover {
     color: #3399ee;
     text-decoration: none;
 }
+select {
+    background: #FFFFFF;
+    border-style: solid;
+    border-color: #AAAAAA;
+    border-width: 1px;
+}
