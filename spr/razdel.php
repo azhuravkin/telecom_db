@@ -3,8 +3,8 @@
 
     $razdelID = $_GET['razdelID'];
 
-    // Получить уникальные podrazdelID из данного раздела
-    $query1 = "SELECT DISTINCT(`podrazdelID`) AS `podrazdelID`, `name` FROM `podrazdel` WHERE `razdelID` = '$razdelID' ORDER BY `podrazdelID`";
+    // Получить podrazdelID из данного раздела
+    $query1 = "SELECT * FROM `podrazdel` WHERE `razdelID` = '$razdelID' ORDER BY `podrazdelID`";
     $result1 = mysql_query($query1);
 
     while ($row1 = mysql_fetch_array($result1)) {
