@@ -15,7 +15,7 @@
 
 	$query2 = "SELECT `service`.*, `number`.`telephone` FROM `service`
 	    LEFT JOIN `number` ON `number`.`serviceID` = `service`.`serviceID`
-	    WHERE `service`.`podrazdelID` = '$podrazdelID' ORDER BY `service`.`serviceID`";
+	    WHERE `service`.`podrazdelID` = '$podrazdelID' ORDER BY `service`.`serviceID`, `number`.`telephone`";
 	$result2 = mysql_query($query2);
 
 	if (mysql_num_rows($result2)) {
