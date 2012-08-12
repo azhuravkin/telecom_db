@@ -51,9 +51,11 @@
 	    $query = "INSERT INTO `service` VALUES ('$serviceID', '$name', '$comment', '$podrazdelID')";
 	    mysql_query($query) or die ("Query failed 1");
 
-	    // Вставляем данные в таблицу number
-	    $query = "INSERT INTO `number` VALUES (NULL, '$number', '$serviceID')";
-	    mysql_query($query) or die ("Query failed 2");
+	    if (strlen($number)) {
+		// Вставляем данные в таблицу number
+		$query = "INSERT INTO `number` VALUES (NULL, '$number', '$serviceID')";
+		mysql_query($query) or die ("Query failed 2");
+	    }
 
 	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=".$razdelID."\">";
 	    print "&nbsp;<div align=\"center\"><h4>Новая служба добавлена.</h4>\n";
