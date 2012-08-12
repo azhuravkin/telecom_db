@@ -60,11 +60,11 @@
 			// Удалить телефоны, принадлежащие этому сервису
 			$query = "DELETE FROM `number` WHERE `serviceID` = '$serviceID'";
 			mysql_query($query) or die ("Query failed 6");
-		    }
 
-		    // Удалить данные из таблицы service
-		    $query = "DELETE FROM `service` WHERE `serviceID` = '$serviceID'";
-		    mysql_query($query) or die ("Query failed 7");
+			// Удалить данные из таблицы service
+			$query = "DELETE FROM `service` WHERE `serviceID` = '$serviceID'";
+			mysql_query($query) or die ("Query failed 7");
+		    }
 		}
 
 		if (isset($_POST['del_podrazdel'][$podrazdelID])) {
