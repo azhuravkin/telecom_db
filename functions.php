@@ -1,10 +1,14 @@
 <?php
-    function init_db($host, $user, $pass, $db) {
-	mysql_connect($host, $user, $pass) or
-	    die("<div align='center'><h4><font color='red'>Невозможно подключиться к серверу $host...</font></h4></div>\n</body>\n</html>");
+    require("config.php");
 
-	mysql_select_db($db) or
-	    die("<div align='center'><h4><font color='red'>Невозможно выбрать базу данных $db...</font></h4></div>\n</body>\n</html>");
+    function init_db() {
+	global $db_host, $db_user, $db_pass, $db_name;
+
+	mysql_connect($db_host, $db_user, $db_pass) or
+	    die("<div align='center'><h4><font color='red'>Невозможно подключиться к серверу $db_host...</font></h4></div>\n</body>\n</html>");
+
+	mysql_select_db($db_name) or
+	    die("<div align='center'><h4><font color='red'>Невозможно выбрать базу данных $db_name...</font></h4></div>\n</body>\n</html>");
 
 	mysql_query("SET NAMES 'utf8'");
     }

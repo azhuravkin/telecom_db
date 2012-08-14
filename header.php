@@ -9,9 +9,9 @@
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 <?php
-    include("functions.php");
+    require("functions.php");
 
     session_start();
     print_links();
-    init_db("localhost", "telecom", "telecom123", "telecom");
+    init_db();
 ?>
