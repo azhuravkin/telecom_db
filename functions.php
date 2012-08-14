@@ -46,21 +46,23 @@
     }
 
     function print_links() {
-	print "<td><a href='/db/'>На главную</a>";
+	global $prefix;
+
+	print "<td><a href='$prefix/'>На главную</a>";
 
 	if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'Y') {
-	    echo '&nbsp; <a href="/db/users/edit_users.php">Пользователи</a>';
+	    echo "&nbsp; <a href='$prefix/users/edit_users.php'>Пользователи</a>";
 	}
 
 	print "</td><td align='right'>";
 
 	if (isset($_SESSION['valid_user'])) {
-	    print "<a href='/db/logout.php'>Выход (".$_SESSION['valid_user'].")</a>";
+	    print "<a href='$prefix/logout.php'>Выход (".$_SESSION['valid_user'].")</a>";
 	} else {
-	    print "<a href='/db/login.php'>Вход</a>";
+	    print "<a href='$prefix/login.php'>Вход</a>";
 
-	    if ($_SERVER["REQUEST_URI"] != "/db/login.php") {
-		die("<meta http-equiv='Refresh' content='0; URL=/db/login.php'>\n");
+	    if ($_SERVER["REQUEST_URI"] != "$prefix/login.php") {
+		die("<meta http-equiv='Refresh' content='0; URL=$prefix/login.php'>\n");
 	    }
 	}
 

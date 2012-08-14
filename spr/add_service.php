@@ -10,7 +10,7 @@
 	    $result = mysql_query($query);
 
 	    if (mysql_num_rows($result) == 0) {
-		print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=".$razdelID."\">";
+		print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/spr/edit_razdel.php?razdelID=".$razdelID."\">";
 		print "&nbsp;<div align=\"center\"><h4>Сначала добавьте подраздел!</h4>\n";
 		exit;
 	    }
@@ -57,7 +57,7 @@
 		mysql_query($query) or die ("Query failed 2");
 	    }
 
-	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=".$razdelID."\">";
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/spr/edit_razdel.php?razdelID=".$razdelID."\">";
 	    print "&nbsp;<div align=\"center\"><h4>Новая служба добавлена.</h4>\n";
 	}
     } else {

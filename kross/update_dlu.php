@@ -23,7 +23,7 @@
 		mysql_query($query) or die ("Query failed");
 	    }
 
-	print '<meta http-equiv="Refresh" content="1; URL=/db/kross/dlu.php?dluID=' . $dluID . '">&nbsp;
+	print '<meta http-equiv="Refresh" content="1; URL=$prefix/kross/dlu.php?dluID=' . $dluID . '">&nbsp;
 <div align="center"><h4>Изменения были сохранены.</h4>';
 	}
     } else {

@@ -17,7 +17,7 @@
 	    $query = "INSERT INTO `podrazdel` VALUES (NULL, '$podrazdel', '$razdelID')";
 	    mysql_query($query) or die ("Query failed");
 
-	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/edit_razdel.php?razdelID=" . $razdelID . "\">";
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/spr/edit_razdel.php?razdelID=" . $razdelID . "\">";
 	    print '&nbsp;<div align="center"><h4>Новый подраздел был добавлен.</h4>';
 	}
     } else {

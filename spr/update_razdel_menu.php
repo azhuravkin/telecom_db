@@ -40,7 +40,7 @@
 		    }
 		}
 	    }
-	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/\">";
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/spr/\">";
 	    print '&nbsp;<div align="center"><h4>Изменения были сохранены.</h4>';
 	}
     } else {

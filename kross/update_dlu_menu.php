@@ -30,7 +30,7 @@
 		}
 	    }
 
-	    print '<meta http-equiv="Refresh" content="1; URL=/db/kross/">&nbsp;<div align="center"><h4>Изменения успешно сохранены.</h4>';
+	    print '<meta http-equiv="Refresh" content="1; URL=$prefix/kross/">&nbsp;<div align="center"><h4>Изменения успешно сохранены.</h4>';
 	}
     } else {
 	goHome();

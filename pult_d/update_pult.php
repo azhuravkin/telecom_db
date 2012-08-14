@@ -37,7 +37,7 @@
 	    }
 	}
 
-	print '<meta http-equiv="Refresh" content="1; URL=/db/pult_d/pult.php?pultID=' . $pultID . '">&nbsp;
+	print '<meta http-equiv="Refresh" content="1; URL=$prefix/pult_d/pult.php?pultID=' . $pultID . '">&nbsp;
 <div align="center"><h4>Изменения были сохранены.</h4>';
 
     } else {

@@ -4,7 +4,7 @@
     $fio = trim($_GET['fio']);
 
     if (empty($fio)) {
-	print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/pult_a/\">";
+	print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/pult_a/\">";
 	print '&nbsp;<div align="center"><h4><font color="red">Не указан параметр для поиска!</font></h4>';
     } else {
 	// Запрос принадлежности фамилии к пульту

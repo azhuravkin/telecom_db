@@ -27,12 +27,12 @@
 	    $query .= "')";
 
 	    if (empty($password)) {
-		print '<meta http-equiv="Refresh" content="1; URL=/db/add_user.php">&nbsp;';
+		print '<meta http-equiv="Refresh" content="1; URL=$prefix/add_user.php">&nbsp;';
 		print '<div align="center"><h4><font color="red">Пароль не указан!</font></h4>';
 	    } else {
 		mysql_query($query) or die ("Query failed");
 
-		print '<meta http-equiv="Refresh" content="1; URL=/db/users/edit_users.php">&nbsp;<div align="center"><h4>Новый пользователь добавлен.</h4>';
+		print '<meta http-equiv="Refresh" content="1; URL=$prefix/users/edit_users.php">&nbsp;<div align="center"><h4>Новый пользователь добавлен.</h4>';
 	    }
 	}
     } else {

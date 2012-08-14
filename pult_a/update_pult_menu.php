@@ -39,7 +39,7 @@
 	    }
 	}
 
-	print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/pult_a/\">";
+	print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/pult_a/\">";
 	print '&nbsp;<div align="center"><h4>Изменения были сохранены.</h4>';
     } else {
 	goHome();

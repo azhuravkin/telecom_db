@@ -64,7 +64,7 @@
 		(NULL, '$key', '$sort', '$tel', '$pult', '$sign', '$pen', '$kross', '$abonent', '$pultID')";
 	    mysql_query($query);
 
-	    print '<meta http-equiv="Refresh" content="1; URL=/db/pult_d/pult.php?pultID=' . $pultID . '">';
+	    print '<meta http-equiv="Refresh" content="1; URL=$prefix/pult_d/pult.php?pultID=' . $pultID . '">';
 	    print '&nbsp;<div align="center"><h4>Кнопка добавлена.</h4>';
 	}
     } else {

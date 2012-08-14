@@ -4,7 +4,7 @@
     $comment = trim($_GET['comment']);
 
     if (empty($comment)) {
-	print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/spr/\">";
+	print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/spr/\">";
 	print '&nbsp;<div align="center"><h4><font color="red">Не указана фамилия для поиска!</font></h4>';
     } else {
 	// Запрос принадлежности комментария к разделу и подразделу

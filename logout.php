@@ -8,7 +8,7 @@
     unset($_SESSION['admin']);
     session_destroy();
 
-    print "<meta http-equiv='Refresh' content='1; URL=/db/login.php'>&nbsp;<div align='center'><h4>Вы вышли.</h4>";
+    print "<meta http-equiv='Refresh' content='1; URL=$prefix/login.php'>&nbsp;<div align='center'><h4>Вы вышли.</h4>";
 
     include "footer.php";
 ?>

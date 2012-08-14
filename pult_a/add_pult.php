@@ -25,7 +25,7 @@
 	    $query = "INSERT INTO pult_a_menu VALUES ('$pultID','$pultSort','$pultName')";
 	    mysql_query($query) or die ("Query failed");
 
-	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=/db/pult_a/\">";
+	    print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/pult_a/\">";
 	    print '&nbsp;<div align="center"><h4>Новый пульт был добавлен.</h4>';
 	}
     } else {
