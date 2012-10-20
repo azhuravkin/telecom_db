@@ -13,13 +13,13 @@
 	}
 
 	for ($i = 0; $i < $count; $i++) {
-	    $pult_id = $_POST['pultID'][$i];
-	    $abonent = trim($_POST['abonent'][$i]);
-	    $dlu_pult = trim($_POST['dlu_pult'][$i]);
-	    $kross_pult = trim($_POST['kross_pult'][$i]);
-	    $dlu_abonent = trim($_POST['dlu_abonent'][$i]);
-	    $kross_abonent = trim($_POST['kross_abonent'][$i]);
-	    $comment = trim($_POST['comment'][$i]);
+	    $pult_id = clean($_POST['pultID'][$i]);
+	    $abonent = clean($_POST['abonent'][$i]);
+	    $dlu_pult = clean($_POST['dlu_pult'][$i]);
+	    $kross_pult = clean($_POST['kross_pult'][$i]);
+	    $dlu_abonent = clean($_POST['dlu_abonent'][$i]);
+	    $kross_abonent = clean($_POST['kross_abonent'][$i]);
+	    $comment = clean($_POST['comment'][$i]);
 
 	    // Вносим изменения в таблицу pult
 	    $query = "UPDATE pult_a_data SET abonent = '$abonent',

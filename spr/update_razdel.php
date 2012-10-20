@@ -13,15 +13,15 @@
 	    print '<div align="center"><h4><font color="red">Информация в этом разделе была обновлена другим пользователем!!!</font></h4>';
 	} else {
 	    foreach ($_POST['podrazdelName'] as $podrazdelID => $podrazdel) {
-		$podrazdelName = trim($podrazdel);
+		$podrazdelName = clean($podrazdel);
 
 		// Изменить название подраздела
 		$query = "UPDATE `podrazdel` SET `name` = '$podrazdelName' WHERE `podrazdelID` = '$podrazdelID'";
 		mysql_query($query) or die ("Query failed 1");
 
 		foreach ($_POST['serviceName'][$podrazdelID] as $serviceID => $service) {
-		    $serviceName = trim($service);
-		    $serviceComment = trim($_POST['serviceComment'][$podrazdelID][$serviceID]);
+		    $serviceName = clean($service);
+		    $serviceComment = clean($_POST['serviceComment'][$podrazdelID][$serviceID]);
 
 		    // Изменить название и комментарий службы
 		    $query = "UPDATE `service` SET `name` = '$serviceName', `comment` = '$serviceComment'
@@ -30,7 +30,7 @@
 		}
 
 		foreach ($_POST['number'][$podrazdelID] as $numberID => $number) {
-		    $telephone = trim($number);
+		    $telephone = clean($number);
 
 		    // Изменить телефонный номер
 		    $query = "UPDATE `number` SET `telephone` = '$telephone' WHERE `numberID` = '$numberID'";
@@ -38,7 +38,7 @@
 		}
 
 		foreach ($_POST['new_number'][$podrazdelID] as $serviceID => $number) {
-		    $telephone = trim($number);
+		    $telephone = clean($number);
 
 		    if (strlen($telephone)) {
 			// Добавить новый номер для службы

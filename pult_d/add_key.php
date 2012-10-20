@@ -2,7 +2,7 @@
     include "../header.php";
 
     if ($_SESSION['writable'] == 'Y') {
-	$pultID = trim($_POST['pultID']);
+	$pultID = clean($_POST['pultID']);
 
 	if (empty($_POST['key'])) {
 	    $query = "SELECT * FROM pult_d_menu WHERE pultID = '$pultID'";
@@ -51,14 +51,14 @@
 </tr>
 </table></p>";
 	} else {
-	    $key = trim($_POST['key']);
-	    $sort = trim($_POST['sort']);
-	    $tel = trim($_POST['tel']);
-	    $pult = trim($_POST['pult']);
-	    $sign = trim($_POST['sign']);
-	    $pen = trim($_POST['pen']);
-	    $kross = trim($_POST['kross']);
-	    $abonent = trim($_POST['abonent']);
+	    $key = clean($_POST['key']);
+	    $sort = clean($_POST['sort']);
+	    $tel = clean($_POST['tel']);
+	    $pult = clean($_POST['pult']);
+	    $sign = clean($_POST['sign']);
+	    $pen = clean($_POST['pen']);
+	    $kross = clean($_POST['kross']);
+	    $abonent = clean($_POST['abonent']);
 
 	    $query = "INSERT INTO `pult_d_data` VALUES
 		(NULL, '$key', '$sort', '$tel', '$pult', '$sign', '$pen', '$kross', '$abonent', '$pultID')";

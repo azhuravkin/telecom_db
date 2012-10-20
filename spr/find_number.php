@@ -1,7 +1,7 @@
 <?php
     include "../header.php";
 
-    $number = trim($_GET['number']);
+    $number = clean($_GET['number']);
 
     if (empty($number)) {
 	print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/spr/\">";

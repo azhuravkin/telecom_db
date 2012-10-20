@@ -15,8 +15,8 @@
 <p><input type="submit" value="Добавить"></p>
 </form>';
 	} else {
-	    $pultSort = trim($_POST['pultSort']);
-	    $pultName = trim($_POST['pultName']);
+	    $pultSort = clean($_POST['pultSort']);
+	    $pultName = clean($_POST['pultName']);
 
 	    // Ищем свободный pultID
 	    $query = "SELECT MAX(`pultID`) FROM `pult_d_menu`";

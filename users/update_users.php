@@ -7,7 +7,7 @@
 	    print '<div align="center"><h4><font color="red">Информация в этом списке была обновлена другим пользователем!!!</font></h4>';
 	} else {
 	    foreach ($_POST['username'] as $authID => $user) {
-		$username = trim($user);
+		$username = clean($user);
 		$password = $_POST['password'][$authID];
 
 		$query = "UPDATE `auth` SET";

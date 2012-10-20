@@ -46,12 +46,12 @@
 </td></tr>";
 	    print "</table><p><input type='submit' value='Добавить запись'></form></p>\n";
 	} else {
-	    $abonent = trim($_POST['abonent']);
-	    $dlu_pult = trim($_POST['dlu_pult']);
-	    $kross_pult = trim($_POST['kross_pult']);
-	    $dlu_abonent = trim($_POST['dlu_abonent']);
-	    $kross_abonent = trim($_POST['kross_abonent']);
-	    $comment = trim($_POST['comment']);
+	    $abonent = clean($_POST['abonent']);
+	    $dlu_pult = clean($_POST['dlu_pult']);
+	    $kross_pult = clean($_POST['kross_pult']);
+	    $dlu_abonent = clean($_POST['dlu_abonent']);
+	    $kross_abonent = clean($_POST['kross_abonent']);
+	    $comment = clean($_POST['comment']);
 	    $id = $_POST['id'];
 
 	    $query = "INSERT INTO pult_a_data VALUES (NULL,'$abonent','$dlu_pult','$kross_pult',

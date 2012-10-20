@@ -10,9 +10,9 @@
 	}
 
 	for ($i = 0; $i < $count; $i++) {
-	    $pultID = trim($_POST['pultID'][$i]);
-	    $pultSort = trim($_POST['sort'][$i]);
-	    $pultName = trim($_POST['pultName'][$i]);
+	    $pultID = clean($_POST['pultID'][$i]);
+	    $pultSort = clean($_POST['sort'][$i]);
+	    $pultName = clean($_POST['pultName'][$i]);
 
 	    // Изменить порядковый номер
 	    $query = "UPDATE pult_d_menu SET sort = '$pultSort' WHERE pultID = '$pultID'";
@@ -24,7 +24,7 @@
 
 	    // Если был(и) отмечен(ы) чекбокс(ы) 
 	    if (isset($_POST['del_pult'][$i])) {
-		$del_pult = trim($_POST['del_pult'][$i]);
+		$del_pult = clean($_POST['del_pult'][$i]);
 
 		// Удалить данные из таблицы pult_d_menu
 		$query = "DELETE FROM pult_d_menu WHERE pultID = '$del_pult'";

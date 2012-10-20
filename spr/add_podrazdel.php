@@ -11,7 +11,7 @@
 <input type='hidden' name='razdelID' value='$razdelID'>
 </form>";
 	} else {
-	    $podrazdel = trim($_POST['podrazdel']);
+	    $podrazdel = clean($_POST['podrazdel']);
 
 	    // Вставляем данные в таблицу podrazdel
 	    $query = "INSERT INTO `podrazdel` VALUES (NULL, '$podrazdel', '$razdelID')";

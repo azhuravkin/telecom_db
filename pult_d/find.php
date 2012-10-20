@@ -1,7 +1,7 @@
 <?php
     include "../header.php";
 
-    $value = trim($_GET['search']);
+    $value = clean($_GET['search']);
 
     if (empty($value)) {
 	print '<meta http-equiv="Refresh" content="1; URL=$prefix/pult_d/">&nbsp;

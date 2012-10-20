@@ -1,7 +1,7 @@
 <?php
     include "../header.php";
 
-    $comment = trim($_GET['comment']);
+    $comment = clean($_GET['comment']);
 
     if (empty($comment)) {
 	print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/spr/\">";

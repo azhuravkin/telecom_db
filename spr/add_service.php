@@ -37,11 +37,11 @@
 <input type='hidden' name='razdelID' value='$razdelID'>
 </form>";
 	} else {
-	    $razdelID = $_POST['razdelID'];
-	    $podrazdelID = $_POST['podrazdelID'];
-	    $name = trim($_POST['name']);
-	    $comment = trim($_POST['comment']);
-	    $number = trim($_POST['number']);
+	    $razdelID = clean($_POST['razdelID']);
+	    $podrazdelID = clean($_POST['podrazdelID']);
+	    $name = clean($_POST['name']);
+	    $comment = clean($_POST['comment']);
+	    $number = clean($_POST['number']);
 
 	    // Ищем свободный serviceID
 	    $query = "SELECT MAX(`serviceID`) FROM `service`";

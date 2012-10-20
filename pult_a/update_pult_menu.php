@@ -11,9 +11,9 @@
 	}
 
 	for ($i = 0; $i < $count; $i++) {
-	    $pultID = $_POST['pultID'][$i];
-	    $pultSort = $_POST['sort'][$i];
-	    $pultName = trim($_POST['pultName'][$i]);
+	    $pultID = clean($_POST['pultID'][$i]);
+	    $pultSort = clean($_POST['sort'][$i]);
+	    $pultName = clean($_POST['pultName'][$i]);
 
 	    // Изменить порядковый номер
 	    $query = "UPDATE pult_a_menu SET sort = '$pultSort'

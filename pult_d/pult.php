@@ -1,7 +1,7 @@
 <?php
     include "../header.php";
 
-    $pultID = trim($_GET['pultID']);
+    $pultID = clean($_GET['pultID']);
 
     $query = "SELECT * FROM `pult_d_menu` WHERE `pultID` = '$pultID'";
     $result = mysql_query($query);

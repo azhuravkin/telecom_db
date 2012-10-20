@@ -7,7 +7,7 @@
 	    print '<div align="center"><h4><font color="red">Информация в этом меню была обновлена другим пользователем!!!</font></h4>';
 	} else {
 	    foreach ($_POST['razdelName'] as $razdelID => $name) {
-		$razdelName = trim($name);
+		$razdelName = clean($name);
 
 		// Изменить название раздела
 		$query = "UPDATE `razdel` SET `name` = '$razdelName' WHERE `razdelID` = '$razdelID'";

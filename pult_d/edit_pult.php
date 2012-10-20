@@ -1,7 +1,7 @@
 <?php
     include "../header.php";
 
-    $pultID = trim($_GET['pultID']);
+    $pultID = clean($_GET['pultID']);
 
     if ($_SESSION['writable'] == 'Y') {
 	$query = "SELECT * FROM pult_d_menu WHERE pultID = '$pultID'";

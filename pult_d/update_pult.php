@@ -2,7 +2,7 @@
     include "../header.php";
 
     if ($_SESSION['writable'] == 'Y') {
-	$pultID = trim($_POST['pultID']);
+	$pultID = clean($_POST['pultID']);
 
 	// Получить количество записей в пульте
 	$query = "SELECT count(*) AS count FROM pult_d_data WHERE pultID = '$pultID'";
@@ -12,15 +12,15 @@
 	}
 
 	for ($i = 0; $i < $count; $i++) {
-	    $keyID = trim($_POST['keyID'][$i]);
-	    $key = trim($_POST['key'][$i]);
-	    $sort = trim($_POST['sort'][$i]);
-	    $abonent = trim($_POST['abonent'][$i]);
-	    $tel = trim($_POST['tel'][$i]);
-	    $pult = trim($_POST['pult'][$i]);
-	    $sign = trim($_POST['sign'][$i]);
-	    $pen = trim($_POST['pen'][$i]);
-	    $kross = trim($_POST['kross'][$i]);
+	    $keyID = clean($_POST['keyID'][$i]);
+	    $key = clean($_POST['key'][$i]);
+	    $sort = clean($_POST['sort'][$i]);
+	    $abonent = clean($_POST['abonent'][$i]);
+	    $tel = clean($_POST['tel'][$i]);
+	    $pult = clean($_POST['pult'][$i]);
+	    $sign = clean($_POST['sign'][$i]);
+	    $pen = clean($_POST['pen'][$i]);
+	    $kross = clean($_POST['kross'][$i]);
 
 	    // Вносим изменения в таблицу puld_d_data
 	    $query = "UPDATE `pult_d_data` SET `key` = '$key', `sort` = '$sort', `telephone` = '$tel', `pult` = '$pult',

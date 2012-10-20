@@ -13,7 +13,7 @@
 <p><input type="submit" value="Добавить"></p>
 </form>';
 	} else {
-	    $name = trim($_POST['name']);
+	    $name = clean($_POST['name']);
 
 	    $query = "INSERT INTO `razdel` VALUES (NULL, '$name')";
 	    mysql_query($query) or die ("Query failed");

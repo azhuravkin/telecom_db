@@ -1,7 +1,7 @@
 <?php
     include "../header.php";
 
-    $fio = trim($_GET['fio']);
+    $fio = clean($_GET['fio']);
 
     if (empty($fio)) {
 	print "<meta http-equiv=\"Refresh\" content=\"1; URL=$prefix/pult_a/\">";

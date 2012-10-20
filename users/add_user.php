@@ -17,8 +17,8 @@
 <p><input type="submit" value="Добавить"></p>
 </form>';
 	} else {
-	    $username = trim($_POST['username']);
-	    $password = $_POST['password'];
+	    $username = clean($_POST['username']);
+	    $password = clean($_POST['password']);
 
 	    $query = "INSERT INTO `auth` VALUES (NULL, '$username', md5('$password'), '";
 	    $query .= (isset($_POST['writable'])) ? 'Y' : 'N';
