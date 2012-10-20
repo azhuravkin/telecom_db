@@ -98,4 +98,19 @@
 	print $all - ($onlyGorod + $gorod);
 	print "</td>\n</tr></table>\n";
     }
+
+    function clean($data) {
+	$str = trim($data);
+
+	if (get_magic_quotes_gpc()) {
+		$str = str_replace('\"', "&quot;", $str);
+		$str = str_replace("\'", "&#039;", $str);
+		$str = str_replace("<", "&lt;", $str);
+		$str = str_replace(">", "&gt;", $str);
+	} else {
+		$str = htmlspecialchars($str, ENT_QUOTES, "UTF-8", false) ;
+	}
+
+	return $str ;
+    }
 ?>
