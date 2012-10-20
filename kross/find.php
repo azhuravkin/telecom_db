@@ -4,7 +4,7 @@
     $value = trim($_GET['search']);
 
     if (empty($value)) {
-	print '<meta http-equiv="Refresh" content="1; URL=$prefix/kross/">&nbsp;
+	print "<meta http-equiv='Refresh' content='1; URL=$prefix/kross/'>&nbsp";
 <div align="center"><h4><font color="red">Не указан параметр поиска!</font></h4>';
     } else {
 
@@ -33,7 +33,7 @@
 	$rows = mysql_num_rows($result2);
 
 	if ((!$rows) || ($rows < 1)) {
-	    print '<meta http-equiv="Refresh" content="1; URL=$prefix/kross/">&nbsp;
+	    print "<meta http-equiv='Refresh' content='1; URL=$prefix/kross/'>&nbsp";
 <div align="center"><h4><font color="red">Объект ' . $value . ' не найден...</font></h4>';
 	} else {
 	    $oldID = 0;

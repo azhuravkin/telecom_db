@@ -36,7 +36,7 @@
 	    // Вставляем данные в таблицу para
 	    mysql_query($query) or die ("Query failed");
 
-	    print '<meta http-equiv="Refresh" content="1; URL=$prefix/kross/">&nbsp;<div align="center"><h4>Новый DLU добавлен.</h4>';
+	    print "<meta http-equiv='Refresh' content='1; URL=$prefix/kross/'>&nbsp;<div align='center'><h4>Новый DLU добавлен.</h4>";
 	}
     } else {
 	goHome();
