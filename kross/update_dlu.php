@@ -9,12 +9,12 @@
 	    print '<div align="center"><h4><font color="red">Информация в этом DLU была обновлена другим пользователем!!!</font></h4>';
 	} else {
 	    foreach ($_POST['tel'] as $paraID => $number) {
-		$tel = trim($number);
-		$pult = trim($_POST['pult'][$paraID]);
-		$sign = trim($_POST['sign'][$paraID]);
-		$pen = trim($_POST['pen'][$paraID]);
-		$kross = trim($_POST['kross'][$paraID]);
-		$abonent = trim($_POST['abonent'][$paraID]);
+		$tel = clean($number);
+		$pult = clean($_POST['pult'][$paraID]);
+		$sign = clean($_POST['sign'][$paraID]);
+		$pen = clean($_POST['pen'][$paraID]);
+		$kross = clean($_POST['kross'][$paraID]);
+		$abonent = clean($_POST['abonent'][$paraID]);
 
 		// Вносим изменения в таблицу para
 		$query = "UPDATE `para` SET `telephone` = '$tel', `pult` = '$pult', `sign` = '$sign',

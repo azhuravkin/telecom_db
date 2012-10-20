@@ -16,8 +16,8 @@
 <p><input type="submit" value="Добавить"></p>
 </form>';
 	} else {
-	    $dluSort = trim($_POST['dluSort']);
-	    $dluName = trim($_POST['dluName']);
+	    $dluSort = clean($_POST['dluSort']);
+	    $dluName = clean($_POST['dluName']);
 
 	    // Ищем свободный dluID
 	    $query = "SELECT MAX(`dluID`) FROM `dlu`";

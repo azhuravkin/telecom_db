@@ -7,8 +7,8 @@
 	    print '<div align="center"><h4><font color="red">Информация в этом меню была обновлена другим пользователем!!!</font></h4>';
 	} else {
 	    foreach ($_POST['sort'] as $dluID => $sort) {
-		$dluSort = trim($sort);
-		$dluName = trim($_POST['dluName'][$dluID]);
+		$dluSort = clean($sort);
+		$dluName = clean($_POST['dluName'][$dluID]);
 
 		// Изменить порядковый номер
 		$query = "UPDATE `dlu` SET `sort` = '$dluSort'";
