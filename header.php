@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>База данных АТС Hicom-300 производственного объединения БелавтоМАЗ</title>
+<title>$title</title>
 </head>
 <link rel="stylesheet" href="$prefix/style.css" />
 </style>
