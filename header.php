@@ -2,9 +2,15 @@
     require("functions.php");
     session_start();
 
+    print "<html>\n<head>\n";
+
+    if (!isset($_SESSION['valid_user']) && ($_SERVER["REQUEST_URI"] != "$prefix/login.php")) {
+	print "<meta http-equiv='Refresh' content='0; URL=$prefix/login.php'>\n</head>";
+	include "footer.php";
+	exit;
+    }
+
     print <<<END
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>$title</title>
 </head>

@@ -60,10 +60,6 @@
 	    print "<a href='$prefix/logout.php'>Выход (".$_SESSION['valid_user'].")</a>";
 	} else {
 	    print "<a href='$prefix/login.php'>Вход</a>";
-
-	    if ($_SERVER["REQUEST_URI"] != "$prefix/login.php") {
-		die("<meta http-equiv='Refresh' content='0; URL=$prefix/login.php'>\n");
-	    }
 	}
 
 	print "</td></tr>\n</table>\n";
