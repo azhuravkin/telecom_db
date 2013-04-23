@@ -7,9 +7,9 @@
 	die("<div align='center'><h4>Вы уже авторизованы как " . $_SESSION['valid_user'] . ".</h4></div>");
     } elseif (isset($_POST['username']) and isset($_POST['password'])) {
 	// Если пользователь попытался зарегистрироваться
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$query = "SELECT * FROM auth WHERE username = '$username' AND password = md5('$password')";
+	$username = mysql_real_escape_string($_POST['username']);
+	$password = mysql_real_escape_string($_POST['password']);
+	$query = "SELECT * FROM `auth` WHERE `username` = '$username' AND `password` = MD5('$password')";
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) > 0) {
 	    // Если пользователь найден в базе данных,
