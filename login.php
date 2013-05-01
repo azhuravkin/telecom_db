@@ -11,7 +11,7 @@
 	$password = mysql_real_escape_string($_POST['password']);
 	$query = "SELECT * FROM `auth` WHERE `username` = '$username' AND `password` = MD5('$password')";
 	$result = mysql_query($query);
-	if (mysql_num_rows($result) > 0) {
+	if (mysql_num_rows($result) == 1) {
 	    // Если пользователь найден в базе данных,
 	    // регистрируем его идентификатор
 	    $access = mysql_fetch_assoc($result);
